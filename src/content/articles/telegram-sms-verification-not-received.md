@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "guide"
 tags: ["验证码", "短信接收", "故障排查", "语音验证码", "Telegram支持"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-sms-verification-not-received-1.jpg"
 draft: false
 ---
 
