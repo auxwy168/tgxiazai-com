@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "download"
 tags: ["Telegram Web", "网页版", "免安装", "浏览器", "在线聊天"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-web-online-guide-1.jpg"
 draft: false
 ---
 
