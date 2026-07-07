@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "safety"
 tags: ["安全", "加密", "隐私", "对比评测"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-security-analysis-2026-1.jpg"
 draft: false
 ---
 
