@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "tutorial"
 tags: ["机器人", "Bot开发", "API教程", "自动化"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-bot-creat-guide-1.jpg"
 draft: false
 ---
 
