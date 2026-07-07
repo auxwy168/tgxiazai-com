@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "download"
 tags: ["Telegram下载", "iPhone教程", "iOS教程", "苹果手机", "安装教程"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-iphone-ios-download-1.jpg"
 draft: false
 ---
 
