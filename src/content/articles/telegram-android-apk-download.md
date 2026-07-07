@@ -12,6 +12,8 @@ draft: false
 
 ## 前言：Android 用户的两条路
 
+
+<img src="/images/posts/telegram-android-apk-download-1.jpg" alt="安卓手机Telegram APK安装" style="width:100%; border-radius:8px; margin:24px 0;">
 如果你是 Android 用户，在下载 Telegram 这件事上，你比 iPhone 用户幸运得多。不需要换 Apple ID 区域，不需要注册海外账号——Android 是一个开放平台，从官网直接下载 APK 安装包即可。但对于国内 Android 用户来说，事情也没那么简单：大部分国产手机没有预装 Google Play，即使有也需要额外折腾。好在 Telegram 官方提供了两种完全正规的下载途径，我们一条条走。
 
 本文会覆盖 Google Play 下载和官网 APK 下载两种方式、APK 安全校验方法、国内主流 Android 品牌（小米/华为/OPPO/vivo）的具体安装差异，以及没有 Google Play 时的替代方案。如果你是第一次使用 Telegram，安装完成后可以先看 [Telegram 注册入门完整指南](/guide/telegram-download-install-guide/) 创建账号。
@@ -326,6 +328,10 @@ Telegram X 适合以下用户尝试：
 - 想体验更简洁的界面风格
 
 但对大多数普通用户来说，选择标准版 Telegram 就足够用了。
+
+
+
+<img src="/images/posts/telegram-android-apk-download-2.jpg" alt="安卓Telegram聊天界面" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题 FAQ
 
