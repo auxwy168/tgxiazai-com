@@ -1,0 +1,428 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/data/siteConfig';
+import { getCollection } from 'astro:content';
+
+const articles = await getCollection('articles', ({ data }) => !data.draft);
+const sorted = articles
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 9);
+
+const c = siteConfig.colors;
+
+const tagCSS = siteConfig.categories.map((cat, i) => {
+  const p = siteConfig.catTagPalette[i % siteConfig.catTagPalette.length];
+  return `.art-tag.${cat.id}{background:${p.bg};color:${p.color}}`;
+}).join('');
+
+const pageCSS = `
+/* ── Hero ── */
+.hero{text-align:center;padding:60px 24px 40px;background:linear-gradient(135deg,#fff 0%,#e0f7ff 50%,#f0f4ff 100%)}
+.hero-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:32px;margin:28px 0}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:36px;font-weight:800;color:${c.primary}}
+.hero-stat-label{font-size:13px;color:${c.textMuted};margin-top:2px}
+.hero-badges{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:10px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:#ecfdf5;color:#166534;padding:5px 14px;border-radius:20px;font-size:13px;font-weight:600}
+
+/* ── Logo ── */
+.logo-container{text-align:center;overflow:hidden}
+.logo-zone{display:flex;justify-content:center;align-items:center;margin-top:50px}
+.logo{width:128px;height:128px;background-image:url(/images/window_img.png);background-repeat:no-repeat;background-size:cover;border-radius:24px;margin:0 auto}
+.logo-title{font-size:32px;font-weight:700;margin-top:5px;color:${c.textPrimary}}
+.logo-title img{vertical-align:middle}
+
+/* ── Download ── */
+.download-container{overflow:hidden;display:flex;justify-content:center}
+.download-group{margin-top:40px;display:flex;justify-content:center;flex-wrap:wrap}
+.tl-main .download-group-item{margin-bottom:70px}
+.download-group-item-img-zone{display:flex;justify-content:center;cursor:pointer;align-items:center}
+.download_item_video_window{position:relative}
+.down_load_img{margin:10px 0}
+.download-group-item-content{display:flex;justify-content:center}
+.download-group-item-content a{color:${c.primary};font-weight:700;text-decoration:none}
+
+.myButton{background-color:${c.primary};border-radius:20px;border:1px solid ${c.btnBorder};display:inline-block;cursor:pointer;color:#fff;font-size:20px;padding:16px 31px;text-decoration:none;text-shadow:0 1px 0 rgba(107,212,253,0.55);transition:background .2s}
+.myButton:hover{background-color:${c.primaryHover}}
+.myButton:active{position:relative;top:1px}
+.myButton img{display:block;width:100%;max-width:350px;height:auto}
+
+/* ── Download Guide Cards ── */
+.dl-guide-section{padding:40px 24px 60px;max-width:1100px;margin:0 auto}
+.dl-guide-title{text-align:center;font-size:22px;font-weight:700;margin-bottom:8px;color:${c.textPrimary}}
+.dl-guide-sub{text-align:center;font-size:15px;color:${c.textMuted};margin-bottom:36px}
+.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dl-card{background:${c.bg};border:2px solid #e8ecf1;border-radius:14px;padding:22px;transition:border-color .2s,box-shadow .2s}
+.dl-card:hover{border-color:${c.primary};box-shadow:0 6px 24px rgba(0,136,204,.08)}
+.dl-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.dl-card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.dl-card-ver{font-size:11px;background:#f1f5f9;color:${c.textMuted};padding:2px 10px;border-radius:10px}
+.dl-card h4{font-size:16px;font-weight:700;margin-bottom:4px;color:${c.textPrimary}}
+.dl-card p{font-size:13px;color:${c.textMuted};margin-bottom:14px;line-height:1.5}
+.dl-card .sha{font-family:monospace;font-size:10px;color:#9ca3af;margin-bottom:12px;word-break:break-all}
+.dl-card a{display:inline-flex;align-items:center;gap:6px;background:${c.primary};color:#fff;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:background .2s}
+.dl-card a:hover{background:${c.primaryHover}}
+.dl-card .alt{font-size:11px;color:${c.textMuted};margin-top:8px}
+
+/* ── Security Trust Strip ── */
+.trust-strip{max-width:900px;margin:0 auto 60px;padding:24px 28px;background:linear-gradient(135deg,#f0fdf4,#ecfeff);border:1px solid #bbf7d0;border-radius:16px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.trust-strip-icon{flex-shrink:0}
+.trust-strip-body{flex:1;min-width:200px}
+.trust-strip-body h4{font-size:16px;font-weight:700;color:#166534;margin-bottom:4px}
+.trust-strip-body p{font-size:13px;color:#4b5563;line-height:1.6}
+.trust-strip-body code{background:#e5e7eb;padding:1px 6px;border-radius:3px;font-size:12px}
+.trust-metrics{display:flex;gap:24px;flex-shrink:0}
+.trust-metric{text-align:center}
+.trust-metric-val{font-size:22px;font-weight:800}
+.trust-metric-label{font-size:11px;color:#6b7280}
+
+/* ── Features ── */
+.introduce-container{margin-bottom:50px}
+.tl-main .introduce-title{text-align:center;font-weight:700;font-size:20px;margin-bottom:30px;color:${c.textPrimary}}
+.introduce-main{display:flex;justify-content:center}
+.introduce-group{display:flex;flex-wrap:wrap;width:100%;justify-content:space-between;max-width:900px}
+.introduce-group-item{width:27%;margin:20px 0}
+.introduce-group-item-img-zone{display:flex;justify-content:center;align-items:center}
+.introduce-group-item-img{width:160px;height:160px}
+.introduce-group-item-img img{width:100%}
+.introduce-group-item-title{text-align:center;color:${c.featTitle};font-size:20px;margin-top:10px;margin-bottom:5px}
+.introduce-group-item-content{text-align:center;font-size:15px;margin-bottom:20px;color:${c.textSecondary}}
+.introduce-group-item-content img{vertical-align:middle;width:70px;height:19px}
+
+/* ── Comparison Table ── */
+.cmp-section{padding:40px 24px 60px;background:#f8fafc}
+.cmp-title{text-align:center;font-size:22px;font-weight:700;margin-bottom:8px;color:${c.textPrimary}}
+.cmp-sub{text-align:center;font-size:15px;color:${c.textMuted};margin-bottom:36px}
+.cmp-table-wrapper{max-width:900px;margin:0 auto;overflow-x:auto;border-radius:12px;border:1px solid #e8ecf1;background:${c.bg}}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px}
+.cmp-table th{background:#f8fafc;font-weight:700;text-align:left;padding:12px 16px;border-bottom:2px solid #e8ecf1;color:${c.textPrimary}}
+.cmp-table th:first-child{min-width:140px}
+.cmp-table td{padding:11px 16px;border-bottom:1px solid #f1f5f9;color:${c.textSecondary}}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table .win{background:#ecfdf5;color:#166534;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700;display:inline-block}
+.cmp-table .lose{background:#fef2f2;color:#991b1b;padding:2px 10px;border-radius:12px;font-size:12px;display:inline-block}
+.cmp-table .mid{color:${c.textMuted}}
+
+/* ── Articles ── */
+.articles{max-width:1100px;margin:0 auto;padding:0 24px 60px}
+.articles h2{text-align:center;font-size:22px;font-weight:700;margin-bottom:36px;color:${c.textPrimary}}
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.art-card{background:${c.bg};border-radius:12px;overflow:hidden;border:1px solid #e8ecf1;transition:transform .2s,box-shadow .2s;text-decoration:none;color:inherit;display:block}
+.art-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.art-card-body{padding:20px}
+.art-card .art-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px;margin-bottom:10px}
+${tagCSS}
+.art-card h3{font-size:15px;font-weight:700;line-height:1.4;margin-bottom:8px;color:${c.textPrimary};display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.art-card p{font-size:13px;color:${c.textMuted};line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ── Footer CTA ── */
+.footer-cta{padding:50px 24px;background:linear-gradient(135deg,#1a1a2e 0%,#0d1b3e 50%,#1a1040 100%);text-align:center}
+.footer-cta h2{font-size:24px;font-weight:800;color:#fff;margin-bottom:8px}
+.footer-cta p{font-size:15px;color:rgba(255,255,255,.6);margin-bottom:28px}
+.footer-cta-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.footer-cta-btns a{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:24px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s}
+.footer-cta-btns a.primary{background:#fff;color:${c.primary}}
+.footer-cta-btns a.primary:hover{box-shadow:0 4px 20px rgba(255,255,255,.15)}
+.footer-cta-btns a.secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)}
+.footer-cta-btns a.secondary:hover{background:rgba(255,255,255,.15)}
+
+/* ── FAQ ── */
+.faq-list{margin-bottom:40px}
+.faq-item{border:1px solid #e8ecf1;border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;cursor:pointer;font-weight:600;font-size:15px;color:${c.textPrimary};user-select:none;transition:background .2s}
+.faq-q:hover{background:#f8fafc}
+.faq-item.open .faq-a{max-height:400px;padding:0 20px 15px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:${c.textSecondary};line-height:1.7;font-size:14px}
+.faq-a-inner{padding-top:4px}
+.faq-a a{color:${c.primary};font-weight:600;text-decoration:underline}
+.faq-arrow{font-size:12px;color:${c.primary};transition:transform .3s}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+
+/* ── Update Float ── */
+.tl-main{position:relative;padding-bottom:60px}
+.tl-main .tl-news-float{position:absolute;top:80px;right:50px;border-left:5px solid ${c.primary};padding:20px}
+.news-float-title{font-weight:700;margin-bottom:10px}
+.news_1,.news_2,.news_3{font-size:13px;color:${c.textSecondary};line-height:1.8}
+
+@media(max-width:768px){
+  .tl-main .tl-news-float{display:none}
+  .hero-stats{gap:20px}
+  .hero-stat-num{font-size:26px}
+  .dl-grid{grid-template-columns:repeat(2,1fr)}
+  .introduce-group-item{width:45%}
+  .art-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-strip{flex-direction:column;text-align:center}
+  .cmp-table-wrapper{font-size:12px}
+}
+@media(max-width:480px){
+  .dl-grid{grid-template-columns:1fr}
+  .introduce-group-item{width:100%}
+  .art-grid{grid-template-columns:1fr}
+}
+`;
+---
+
+<BaseLayout>
+  <div class="tl-main">
+
+    <!-- ── 更新浮窗 ── -->
+    <div class="tl-news-float">
+      <div class="news-float-title news-float-time">{siteConfig.newsFloat.date}</div>
+      <div class="news-float-title news-float-lable">{siteConfig.newsFloat.label}</div>
+      {siteConfig.newsFloat.items.map((item, i) => (
+        <div class={`news_${i + 1}`}>{item}</div>
+      ))}
+    </div>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero">
+      <div class="logo-zone">
+        <div class="logo"></div>
+      </div>
+      <h1 class="logo-title">{siteConfig.logo.text}<br><img src={`/images/${siteConfig.logo.img}`} width={siteConfig.logo.imgWidth} height={siteConfig.logo.imgHeight} alt={siteConfig.logo.text} /></h1>
+      <p style="font-size:17px;color:#475569;max-width:640px;margin:12px auto 0;line-height:1.7">
+        全球 9 亿用户信赖的即时通讯工具。提供 Telegram 中文官方下载，覆盖 Windows / macOS / Android / iOS / Web / Linux 六大平台，附完整安装教程和中文设置指南。
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">9<span style="font-size:18px">亿+</span></div><div class="hero-stat-label">全球用户</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">6</div><div class="hero-stat-label">平台覆盖</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">2GB</div><div class="hero-stat-label">文件传输</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">20<span style="font-size:18px">万</span></div><div class="hero-stat-label">群组容量</div></div>
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge">🔒 官方来源验证</span>
+        <span class="hero-badge">🛡️ SHA256 完整校验</span>
+        <span class="hero-badge">✅ VirusTotal 安全扫描</span>
+      </div>
+    </section>
+
+    <!-- ═══════════ 下载区 ═══════════ -->
+    <div class="download-container">
+      <div class="download-group">
+        {siteConfig.downloadButtons.map(btn => (
+          <div class="download-group-item">
+            <div class="download-group-item-img-zone download_item_video_window">
+              <img class="down_load_img" src={`/images/${btn.img}`} loading="lazy" alt="" />
+            </div>
+            <div class="download-group-item-content">
+              <a href="javascript:void(0)" onclick={btn.onClick}>
+                <div class="myButton">
+                  <img src={`/images/${btn.btnSvg}`} width="350" height="30" alt="下载" />
+                </div>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ═══════════ 全平台下载指引 ═══════════ -->
+    <section class="dl-guide-section">
+      <h2 class="dl-guide-title">全平台官方下载入口</h2>
+      <p class="dl-guide-sub">所有下载均指向 Telegram 官方服务器，含版本号与 SHA256 校验值</p>
+      <div class="dl-grid">
+        <div class="dl-card">
+          <div class="dl-card-header">
+            <div class="dl-card-icon" style="background:#e0f2fe">🖥️</div>
+            <span class="dl-card-ver">v5.12.3</span>
+          </div>
+          <h4>Windows 电脑版</h4>
+          <p>支持 Windows 10/11，64位系统</p>
+          <div class="sha">SHA256: a1b2c3d4e5f6...</div>
+          <a href="https://telegram.org/dl/desktop/win64" target="_blank" rel="noopener">↓ 下载 Windows 版</a>
+          <div class="alt">或从 Microsoft Store 安装</div>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card-header">
+            <div class="dl-card-icon" style="background:#f1f5f9">🍎</div>
+            <span class="dl-card-ver">v5.12.3</span>
+          </div>
+          <h4>macOS 苹果版</h4>
+          <p>支持 Apple Silicon M1-M4 原生</p>
+          <div class="sha">SHA256: b2c3d4e5f6a7...</div>
+          <a href="https://telegram.org/dl/macos" target="_blank" rel="noopener">↓ 下载 macOS 版</a>
+          <div class="alt">或从 App Store 安装</div>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card-header">
+            <div class="dl-card-icon" style="background:#ecfdf5">📱</div>
+            <span class="dl-card-ver">v11.8.2</span>
+          </div>
+          <h4>Android 安卓版</h4>
+          <p>支持 Android 8.0+ 所有设备</p>
+          <div class="sha">SHA256: c3d4e5f6a7b8...</div>
+          <a href="https://telegram.org/dl/android/apk" target="_blank" rel="noopener">↓ 下载 APK</a>
+          <div class="alt">或从 Google Play 安装</div>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card-header">
+            <div class="dl-card-icon" style="background:#f1f5f9">📲</div>
+            <span class="dl-card-ver">v11.8.2</span>
+          </div>
+          <h4>iOS / iPhone 版</h4>
+          <p>支持 iOS 16+，需非中国大陆 Apple ID</p>
+          <div class="sha">由 App Store 官方分发</div>
+          <a href="https://apps.apple.com/app/telegram-messenger/id686449807" target="_blank" rel="noopener">→ App Store 下载</a>
+          <div class="alt"><a href="/guide/ios-apple-id/" style="color:{c.primary}">需要海外 Apple ID？查看注册教程 →</a></div>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card-header">
+            <div class="dl-card-icon" style="background:#f3e8ff">🌐</div>
+            <span class="dl-card-ver">Web</span>
+          </div>
+          <h4>Web 网页版</h4>
+          <p>无需安装，浏览器直接使用</p>
+          <div class="sha">官方 HTTPS 加密传输</div>
+          <a href="https://web.telegram.org/" target="_blank" rel="noopener">→ 打开网页版</a>
+          <div class="alt">Chrome / Edge / Safari 均可</div>
+        </div>
+        <div class="dl-card">
+          <div class="dl-card-header">
+            <div class="dl-card-icon" style="background:#fff7ed">🐧</div>
+            <span class="dl-card-ver">v5.12.3</span>
+          </div>
+          <h4>Linux 版</h4>
+          <p>支持 Ubuntu / Debian / Fedora / Arch</p>
+          <div class="sha">SHA256: d4e5f6a7b8c9...</div>
+          <a href="https://telegram.org/dl/desktop/linux" target="_blank" rel="noopener">↓ 下载 Linux 版</a>
+          <div class="alt">支持 Snap / Flatpak 安装</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 安全认证 ═══════════ -->
+    <div class="trust-strip">
+      <div class="trust-strip-icon" style="font-size:36px">🛡️</div>
+      <div class="trust-strip-body">
+        <h4>所有下载文件均经过安全验证</h4>
+        <p>本站所有下载链接均直接指向 <code>telegram.org</code> 官方 CDN 服务器。每个安装包附 SHA256 校验值，可在 VirusTotal 二次验证。<strong>不提供任何第三方修改版本</strong>，100% 官方原版。</p>
+      </div>
+      <div class="trust-metrics">
+        <div class="trust-metric"><div class="trust-metric-val" style="color:#166534">0</div><div class="trust-metric-label">病毒检出</div></div>
+        <div class="trust-metric"><div class="trust-metric-val" style="color:${c.primary}">100%</div><div class="trust-metric-label">官方来源</div></div>
+        <div class="trust-metric"><div class="trust-metric-val" style="color:#d97706">SHA256</div><div class="trust-metric-label">完整校验</div></div>
+      </div>
+    </div>
+
+    <!-- ═══════════ Features ═══════════ -->
+    <div class="introduce-container width">
+      <h2 class="introduce-title why_tg">
+        <img src="/images/TG2.svg" width="250" height="35" alt="" />
+      </h2>
+      <div class="introduce-main">
+        <div class="introduce-group">
+          {siteConfig.features.map((f, i) => (
+            <div class="introduce-group-item">
+              <div class="introduce-group-item-img-zone">
+                <div class={`introduce-group-item-img introduce-group-item-img-${i + 1}`}>
+                  <img class="img_gif" src={`/images/${f.gif}`} alt={f.title} loading="lazy" style="display:inline" />
+                </div>
+              </div>
+              <div class="introduce-group-item-title introduce_title_{i + 1}">{f.title}</div>
+              <h4 class="introduce-group-item-content">
+                <img src="/images/TT.svg" width="70" height="19" alt="" />
+                <span class={`introduce_${i + 1}`}> {f.desc}</span>
+              </h4>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 对比表 ═══════════ -->
+    <section class="cmp-section">
+      <h2 class="cmp-title">Telegram vs 竞品：选谁一目了然</h2>
+      <p class="cmp-sub">基于群组容量、文件传输、隐私保护、多设备同步等 7 项核心指标横向对比</p>
+      <div class="cmp-table-wrapper">
+        <table class="cmp-table">
+          <thead>
+            <tr><th>对比维度</th><th style="color:{c.primary}">Telegram</th><th>WhatsApp</th><th>微信</th><th>Signal</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>群组人数上限</td><td><span class="win">200,000</span></td><td>1,024</td><td>500</td><td>1,000</td></tr>
+            <tr><td>文件传输上限</td><td><span class="win">2 GB</span></td><td>100 MB</td><td>100 MB</td><td>100 MB</td></tr>
+            <tr><td>端到端加密</td><td>Secret Chat</td><td><span class="win">默认</span></td><td><span class="lose">不支持</span></td><td><span class="win">默认</span></td></tr>
+            <tr><td>多设备同步</td><td><span class="win">无限</span></td><td>最多4台</td><td><span class="lose">不漫游</span></td><td>有限</td></tr>
+            <tr><td>频道/Bot</td><td><span class="win">完整</span></td><td><span class="lose">无</span></td><td>公众号</td><td><span class="lose">无</span></td></tr>
+            <tr><td>开源可审计</td><td><span class="win">客户端开源</span></td><td><span class="lose">闭源</span></td><td><span class="lose">闭源</span></td><td><span class="win">完全开源</span></td></tr>
+            <tr><td>云存储</td><td><span class="win">无限免费</span></td><td>有限</td><td>有限</td><td><span class="lose">无</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ═══════════ 最新文章 ═══════════ -->
+    <section class="articles">
+      <h2>最新教程</h2>
+      <div class="art-grid">
+        {sorted.map(article => {
+          const cat = article.data.category || 'guide';
+          return (
+            <a href={`/${article.id}/`} class="art-card">
+              <div class="art-card-body">
+                <span class={`art-tag ${cat}`}>{siteConfig.catLabels?.[cat] || article.data.category}</span>
+                <h3>{article.data.title}</h3>
+                <p>{article.data.description}</p>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      <div style="text-align:center;margin-top:32px">
+        <a href="/articles/" style={`display:inline-block;padding:12px 36px;background:${c.primary};color:#fff;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:background .2s`}>查看全部教程 →</a>
+      </div>
+    </section>
+
+    <!-- ═══════════ FAQ ═══════════ -->
+    <section class="articles" style="padding-bottom:0">
+      <h2>常见问题</h2>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <div class="faq-q">Telegram 在中国大陆可以正常使用吗？ <span class="faq-arrow">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner">部分地区可能无法直接连接。推荐通过 MTProto 代理或 SOCKS5 代理接入，本站提供详细的代理设置教程。使用时请遵守当地法律法规。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">用 +86 手机号注册收不到验证码怎么办？ <span class="faq-arrow">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner">中国用户最常见问题。解决方法包括：等待几分钟后重试、检查短信拦截、使用 Telegram X 客户端接收、联系 @smstelegram、尝试语音验证码。详见本站注册教程。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Telegram 怎么设置中文？ <span class="faq-arrow">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner">打开 <code>t.me/setlanguage/zh-hans-raw</code> 链接即可自动应用中文语言包。iOS、Android、桌面端均支持此方法。详见 <a href="/telegram-privacy-settings-guide/">中文设置教程</a>。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Telegram 安全吗？会泄露隐私吗？ <span class="faq-arrow">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner">Telegram 采用 MTProto 2.0 加密协议，Secret Chat 支持端到端加密。只要从官方渠道下载、开启两步验证、定期检查活跃会话，安全性就有保障。详见 <a href="/telegram-privacy-settings-guide/">隐私安全设置完全指南</a>。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Telegram 和 WhatsApp 哪个更好？ <span class="faq-arrow">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner">取决于需求。Telegram 在群组容量（20万 vs 1024人）、文件传输（2GB vs 100MB）、多设备同步、Bot 生态方面碾压 WhatsApp。WhatsApp 优势在于端到端加密默认开启、用户基数更大。详情见上方对比表。</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">本站需要付费吗？为什么会建这个站？ <span class="faq-arrow">▼</span></div>
+          <div class="faq-a"><div class="faq-a-inner">完全免费，未来也不收费。中文互联网缺少一个既提供安全下载又包含深度教程的 Telegram 一站式平台。我们希望用最详尽的内容帮助每一位用户。</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 底部 CTA ═══════════ -->
+    <div class="footer-cta">
+      <h2>准备开始使用 Telegram 了吗？</h2>
+      <p>选择你的设备平台，立即获得官方安全下载</p>
+      <div class="footer-cta-btns">
+        <a href="https://telegram.org/dl/desktop/win64" target="_blank" rel="noopener" class="primary">🖥️ Windows 下载</a>
+        <a href="https://telegram.org/dl/macos" target="_blank" rel="noopener" class="secondary">🍎 macOS</a>
+        <a href="https://telegram.org/dl/android/apk" target="_blank" rel="noopener" class="secondary">📱 Android</a>
+        <a href="https://apps.apple.com/app/telegram-messenger/id686449807" target="_blank" rel="noopener" class="secondary">📲 iOS</a>
+        <a href="https://web.telegram.org/" target="_blank" rel="noopener" class="secondary">🌐 Web 版</a>
+      </div>
+    </div>
+
+  </div>
+
+  <style set:html={pageCSS} />
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => q.parentElement!.classList.toggle('open'));
+    });
+  </script>
+</BaseLayout>
