@@ -18,6 +18,8 @@ draft: false
 
 ## 两步验证（2FA）是什么
 
+
+<img src="/images/posts/telegram-2fa-secret-chat-guide-1.jpg" alt="Telegram两步验证设置" style="width:100%; border-radius:8px; margin:24px 0;">
 两步验证（Two-Factor Authentication，简称 2FA）是绑定在账号上的一层额外保护机制。它的逻辑很简单：
 
 **常规登录只需要一步：** 输入手机号 → 收到短信验证码 → 输入验证码 → 登录成功。
@@ -284,6 +286,10 @@ Secret Chat 区别于普通聊天的两个关键安全特性：
 3. **定期清理**：即使使用普通聊天，定期开启自动删除定时器，清理不需要的历史消息
 
 面向更广泛的 Telegram 安全保障知识，建议阅读本站的 <a href="/telegram-security-analysis-2026">Telegram 安全吗？2026 年最全面的安全性分析</a>；如果你还需要配置其他隐私功能，请查看 <a href="/telegram-privacy-settings-complete-guide">Telegram 隐私设置完全指南</a>。
+
+
+
+<img src="/images/posts/telegram-2fa-secret-chat-guide-2.jpg" alt="Secret Chat端到端加密界面" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题 FAQ
 
