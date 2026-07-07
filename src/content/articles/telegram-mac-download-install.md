@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "download"
 tags: ["Telegram下载", "Mac教程", "macOS", "安装教程", "苹果电脑"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-mac-download-install-1.jpg"
 draft: false
 ---
 
