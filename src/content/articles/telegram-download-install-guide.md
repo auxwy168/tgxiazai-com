@@ -6,7 +6,7 @@ date: 2026-06-24
 lastmod: 2026-06-24
 category: install
 tags: ["下载", "安装", "入门"]
-coverImage: "/images/posts/telegram-download-install-guide-1.jpg"
+coverImage: "/images/posts/telegram-download-install-guide-1.webp"
 ---
 
 Telegram 是目前全球最受欢迎的即时通讯软件之一，以其安全性、速度和丰富的功能而闻名。本教程将手把手教你如何在各个平台下载安装 Telegram 官方正版。
