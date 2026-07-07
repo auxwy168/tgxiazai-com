@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "safety"
 tags: ["隐私", "安全", "设置教程"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-privacy-settings-complete-guide-1.jpg"
 draft: false
 ---
 
