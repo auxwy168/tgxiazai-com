@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "tutorial"
 tags: ["群组教程", "社群管理", "群组功能", "管理工具"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-group-features-guide-1.jpg"
 draft: false
 ---
 
