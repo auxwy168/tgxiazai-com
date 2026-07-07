@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "compare"
 tags: ["对比评测", "微信", "隐私", "安全", "双持"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-vs-wechat-privacy-features-1.jpg"
 draft: false
 ---
 
