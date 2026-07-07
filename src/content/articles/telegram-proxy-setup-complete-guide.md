@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "proxy"
 tags: ["代理", "网络", "MTProto", "SOCKS5", "连接问题"]
-coverImage: "/images/posts/telegram-proxy-setup-complete-guide-1.jpg"
+coverImage: "/images/posts/telegram-proxy-setup-complete-guide-1.webp"
 draft: false
 ---
 
