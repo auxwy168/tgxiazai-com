@@ -16,6 +16,8 @@ draft: false
 
 ## 什么是 Telegram Bot
 
+
+<img src="/images/posts/telegram-bot-creat-guide-1.jpg" alt="BotFather创建机器人界面" style="width:100%; border-radius:8px; margin:24px 0;">
 Telegram Bot 本质上是一个运行在服务器上的程序，通过 Telegram 的 Bot API 接收和发送消息。用户和 Bot 聊天时，消息不是直接发给了某个真人，而是发到了 Telegram 的服务器，服务器再转发给你写的程序，程序处理后再通过 API 回复用户。
 
 Bot 能做：
@@ -558,6 +560,10 @@ Bot 开发的上限很高。以下是你练完 Echo Bot 之后可以探索的方
 4. **支付集成**：Telegram 内置支付 API，Bot 可以直接收款
 5. **Web App**：在 Telegram 内打开你的网页应用（Telegram Mini App）
 6. **游戏开发**：用 HTML5 写 Bot 游戏
+
+
+
+<img src="/images/posts/telegram-bot-creat-guide-2.jpg" alt="Telegram Bot功能展示" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题 FAQ
 
