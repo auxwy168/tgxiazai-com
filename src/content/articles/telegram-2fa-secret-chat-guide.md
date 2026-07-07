@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "safety"
 tags: ["安全", "加密", "两步验证", "教程"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-2fa-secret-chat-guide-1.jpg"
 draft: false
 ---
 
