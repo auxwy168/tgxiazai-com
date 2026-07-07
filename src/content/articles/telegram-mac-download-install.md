@@ -6,14 +6,14 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "download"
 tags: ["Telegram下载", "Mac教程", "macOS", "安装教程", "苹果电脑"]
-coverImage: "/images/posts/telegram-mac-download-install-1.jpg"
+coverImage: "/images/posts/telegram-mac-download-install-1.webp"
 draft: false
 ---
 
 ## 写在前面：Mac 版 Telegram 的两个版本
 
 
-<img src="/images/posts/telegram-mac-download-install-1.jpg" alt="Telegram Mac版下载安装界面" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-mac-download-install-1.webp" alt="Telegram Mac版下载安装界面" style="width:100%; border-radius:8px; margin:24px 0;">
 如果你是 Mac 用户，第一次下载 Telegram 时可能会困惑——到底该从 App Store 下载还是从官网下载 dmg？答案是：**两个渠道都可以下载到官方正版 Telegram，但它们是两个独立的应用程序**。
 
 - **App Store 版**（Telegram Desktop）：通过 Mac App Store 分发，利用 macOS 的沙盒机制运行，自动更新由 App Store 管理，适合大多数普通用户
@@ -212,7 +212,7 @@ App Store 版遵循标准的 macOS App Store 更新流程：
 
 
 
-<img src="/images/posts/telegram-mac-download-install-2.jpg" alt="Mac电脑上的Telegram应用展示" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-mac-download-install-2.webp" alt="Mac电脑上的Telegram应用展示" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题与排查
 
