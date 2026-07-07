@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "download"
 tags: ["Telegram下载", "Windows教程", "桌面版", "安装教程", "电脑版"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-windows-pc-download-1.jpg"
 draft: false
 ---
 
