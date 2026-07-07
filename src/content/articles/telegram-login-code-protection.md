@@ -6,7 +6,7 @@ date: 2026-06-25
 lastmod: 2026-06-25
 category: "security"
 tags: ["账号安全"]
-coverImage: "/images/posts/telegram-login-code-protection-1.jpg"
+coverImage: "/images/posts/telegram-login-code-protection-1.webp"
 draft: false
 ---
 
