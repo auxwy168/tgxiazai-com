@@ -6,14 +6,14 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "download"
 tags: ["Telegram下载", "Windows教程", "桌面版", "安装教程", "电脑版"]
-coverImage: "/images/posts/telegram-windows-pc-download-1.jpg"
+coverImage: "/images/posts/telegram-windows-pc-download-1.webp"
 draft: false
 ---
 
 ## 为什么选择 Telegram 桌面版？
 
 
-<img src="/images/posts/telegram-windows-pc-download-1.jpg" alt="Telegram Windows桌面版下载安装界面" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-windows-pc-download-1.webp" alt="Telegram Windows桌面版下载安装界面" style="width:100%; border-radius:8px; margin:24px 0;">
 如果你每天在电脑前工作超过 6 小时，在手机上频繁切换 Telegram 回复消息会严重打断工作节奏。Telegram 桌面版（Telegram Desktop）是官方出品的 Windows 客户端，与手机端实时同步所有聊天记录、文件和媒体内容。截至 2026 年 7 月，最新版本号是 **v5.12.3**，支持 Windows 10 和 Windows 11 系统，原生 64 位架构，内存占用仅 80-120MB，比网页版 Telegram Web 更流畅，且完全免费、无广告。
 
 Telegram 桌面版的几个核心优势：
@@ -327,7 +327,7 @@ Telegram 大约每 2-4 周发布一次桌面版更新，更新内容主要是 bu
 
 
 
-<img src="/images/posts/telegram-windows-pc-download-2.jpg" alt="Telegram Windows版聊天界面展示" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-windows-pc-download-2.webp" alt="Telegram Windows版聊天界面展示" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题 FAQ
 
