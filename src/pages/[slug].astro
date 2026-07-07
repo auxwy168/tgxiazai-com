@@ -31,7 +31,7 @@ const related = articles
   description={description}
   keywords={keywords || siteConfig.keywords}
   canonicalURL={canonical}
-  ogImage={siteConfig.url + '/images/og-default.png'}
+  ogImage={article.data.coverImage ? (article.data.coverImage.startsWith('/') ? siteConfig.url + article.data.coverImage : article.data.coverImage) : siteConfig.url + '/images/og-default.png'}
   isArticle={true}
   articleMeta={{
     datePublished: date.toISOString().slice(0, 10),
