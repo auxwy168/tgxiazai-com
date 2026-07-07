@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "tutorial"
 tags: ["机器人", "Bot开发", "API教程", "自动化"]
-coverImage: "/images/posts/telegram-bot-creat-guide-1.jpg"
+coverImage: "/images/posts/telegram-bot-creat-guide-1.webp"
 draft: false
 ---
 
@@ -17,7 +17,7 @@ draft: false
 ## 什么是 Telegram Bot
 
 
-<img src="/images/posts/telegram-bot-creat-guide-1.jpg" alt="BotFather创建机器人界面" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-bot-creat-guide-1.webp" alt="BotFather创建机器人界面" style="width:100%; border-radius:8px; margin:24px 0;">
 Telegram Bot 本质上是一个运行在服务器上的程序，通过 Telegram 的 Bot API 接收和发送消息。用户和 Bot 聊天时，消息不是直接发给了某个真人，而是发到了 Telegram 的服务器，服务器再转发给你写的程序，程序处理后再通过 API 回复用户。
 
 Bot 能做：
@@ -563,7 +563,7 @@ Bot 开发的上限很高。以下是你练完 Echo Bot 之后可以探索的方
 
 
 
-<img src="/images/posts/telegram-bot-creat-guide-2.jpg" alt="Telegram Bot功能展示" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-bot-creat-guide-2.webp" alt="Telegram Bot功能展示" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题 FAQ
 
