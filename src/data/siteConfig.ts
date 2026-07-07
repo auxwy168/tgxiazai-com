@@ -103,6 +103,15 @@ export const siteConfig = {
     body: "'Inter', 'Noto Sans SC', system-ui, sans-serif",
   },
 
+  // ── 社交分享链接 ──
+  social: [
+    { name: 'Telegram', href: 'https://t.me/', icon: 'telegram' },
+    { name: 'X (Twitter)', href: 'https://x.com/', icon: 'x' },
+    { name: 'YouTube', href: 'https://youtube.com/', icon: 'youtube' },
+    { name: 'Facebook', href: 'https://facebook.com/', icon: 'facebook' },
+    { name: '微博', href: 'https://weibo.com/', icon: 'weibo' },
+  ],
+
   // ── 页脚 ──
   footer: {
     notice: 'TG下载（tgxiazai.com）是独立的Telegram中文教程与下载导航站点，非Telegram官方。所有下载链接均指向 telegram.org 官方服务器。',
