@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "guide"
 tags: ["中文设置", "语言包", "iOS", "Android", "桌面版", "汉化"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-chinese-language-setup-1.jpg"
 draft: false
 ---
 
