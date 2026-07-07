@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "tutorial"
 tags: ["频道教程", "内容运营", "频道管理", "功能教程"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-channel-create-guide-1.jpg"
 draft: false
 ---
 
