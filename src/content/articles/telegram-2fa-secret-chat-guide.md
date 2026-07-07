@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "safety"
 tags: ["安全", "加密", "两步验证", "教程"]
-coverImage: "/images/posts/telegram-2fa-secret-chat-guide-1.jpg"
+coverImage: "/images/posts/telegram-2fa-secret-chat-guide-1.webp"
 draft: false
 ---
 
@@ -19,7 +19,7 @@ draft: false
 ## 两步验证（2FA）是什么
 
 
-<img src="/images/posts/telegram-2fa-secret-chat-guide-1.jpg" alt="Telegram两步验证设置" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-2fa-secret-chat-guide-1.webp" alt="Telegram两步验证设置" style="width:100%; border-radius:8px; margin:24px 0;">
 两步验证（Two-Factor Authentication，简称 2FA）是绑定在账号上的一层额外保护机制。它的逻辑很简单：
 
 **常规登录只需要一步：** 输入手机号 → 收到短信验证码 → 输入验证码 → 登录成功。
@@ -289,7 +289,7 @@ Secret Chat 区别于普通聊天的两个关键安全特性：
 
 
 
-<img src="/images/posts/telegram-2fa-secret-chat-guide-2.jpg" alt="Secret Chat端到端加密界面" style="width:100%; border-radius:8px; margin:24px 0;">
+<img src="/images/posts/telegram-2fa-secret-chat-guide-2.webp" alt="Secret Chat端到端加密界面" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题 FAQ
 
