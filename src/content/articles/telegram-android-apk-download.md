@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "download"
 tags: ["Telegram下载", "Android教程", "安卓教程", "APK安装", "安装教程"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-android-apk-download-1.jpg"
 draft: false
 ---
 
