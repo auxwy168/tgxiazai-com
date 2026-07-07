@@ -12,6 +12,8 @@ draft: false
 
 ## 收不到验证码？先别慌，90% 的情况都能解决
 
+
+<img src="/images/posts/telegram-sms-verification-not-received-1.jpg" alt="Telegram验证码接收失败" style="width:100%; border-radius:8px; margin:24px 0;">
 Telegram 注册或登录时收不到短信验证码，这是中国用户遇到最多的问题之一。App 上显示「We have sent you a code via SMS」，手机那边却什么动静都没有。一遍遍点「重发」，要么继续收不到，要么直接触发频率限制。
 
 先搞清楚一件事：**Telegram 的验证码发送机制本身没有问题**，99.9% 的情况是因为你的手机、运营商或网络环境导致的接收失败。这不是 Telegram 针对你，也不是你的号码被拉黑了。
@@ -228,6 +230,10 @@ Telegram 的验证码发件人通常是 "Telegram"（英文）或一串短代码
 3. 如果打不开或一直转圈，说明是网络层面的问题
 
 **如果网络不通，先解决网络再注册。** 在这方面的详细方案，可以参考网站的代理网络分类文章。
+
+
+
+<img src="/images/posts/telegram-sms-verification-not-received-2.jpg" alt="网络连接和短信排查示意" style="width:100%; border-radius:8px; margin:24px 0;">
 
 ## 常见问题 FAQ
 
