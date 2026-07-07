@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "proxy"
 tags: ["使用指南", "代理", "网络优化", "VPN", "中国大陆"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-in-china-complete-guide-1.jpg"
 draft: false
 ---
 
