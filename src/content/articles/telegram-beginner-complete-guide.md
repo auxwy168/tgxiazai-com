@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "tutorial"
 tags: ["新手入门", "使用教程", "基础功能", "界面指南"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-beginner-complete-guide-1.jpg"
 draft: false
 ---
 
