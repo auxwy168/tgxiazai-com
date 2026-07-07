@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "compare"
 tags: ["对比评测", "WhatsApp", "即时通讯", "隐私安全"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-vs-whatsapp-comparison-2026-1.jpg"
 draft: false
 ---
 
