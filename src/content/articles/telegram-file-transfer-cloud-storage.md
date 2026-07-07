@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "tutorial"
 tags: ["文件传输", "云存储", "文件管理", "同步"]
-coverImage: "/images/posts/telegram-file-transfer-cloud-storage-1.jpg"
+coverImage: "/images/posts/telegram-file-transfer-cloud-storage-1.webp"
 draft: false
 ---
 
