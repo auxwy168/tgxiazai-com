@@ -6,7 +6,7 @@ date: 2026-07-07
 lastmod: 2026-07-07
 category: "guide"
 tags: ["注册教程", "中国手机号", "+86", "新手入门", "验证码"]
-coverImage: "/images/default-cover.jpg"
+coverImage: "/images/posts/telegram-register-china-phone-1.jpg"
 draft: false
 ---
 
