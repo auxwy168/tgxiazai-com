@@ -41,7 +41,7 @@ const catCss = `
     <div class="cat-filters">
       <a href="/articles/" class:list={["cat-filter", { active: !category }]}>全部</a>
       {siteConfig.categories.map(c =>
-        <a href={`/articles/?category=${c.id}`} class:list={["cat-filter", { active: category === c.id }]}>{c.name}</a>
+        <a href={`/articles/${c.id}/`} class:list={["cat-filter", { active: category === c.id }]}>{c.name}</a>
       )}
     </div>
 
