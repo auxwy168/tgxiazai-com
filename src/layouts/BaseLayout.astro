@@ -125,7 +125,7 @@ const globalCSS = `*,*::before,*::after{box-sizing:border-box;margin:0;padding:0
         <a href="/">首页</a>
         <a href="/articles/">所有教程</a>
         {siteConfig.categories.map(cat => (
-          <a href={`/articles/?category=${cat.id}`}>{cat.name}</a>
+          <a href={`/articles/${cat.id}/`}>{cat.name}</a>
         ))}
       </div>
     </div>
@@ -177,7 +177,7 @@ const globalCSS = `*,*::before,*::after{box-sizing:border-box;margin:0;padding:0
         <h4>教程分类</h4>
         <ul>
           {siteConfig.categories.map(cat => (
-            <li><a href={`/articles/?category=${cat.id}`}>{cat.name}</a></li>
+            <li><a href={`/articles/${cat.id}/`}>{cat.name}</a></li>
           ))}
         </ul>
       </div>
