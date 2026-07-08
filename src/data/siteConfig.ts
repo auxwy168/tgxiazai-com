@@ -105,11 +105,10 @@ export const siteConfig = {
 
   // ── 社交分享链接 ──
   social: [
-    { name: 'Telegram', href: 'https://t.me/', icon: 'telegram' },
-    { name: 'X (Twitter)', href: 'https://x.com/', icon: 'x' },
-    { name: 'YouTube', href: 'https://youtube.com/', icon: 'youtube' },
-    { name: 'Facebook', href: 'https://facebook.com/', icon: 'facebook' },
-    { name: '微博', href: 'https://weibo.com/', icon: 'weibo' },
+    { name: 'Telegram', href: 'https://t.me/share/url?url=https://tgxiazai.com&text=Telegram%E5%AE%98%E6%96%B9%E4%B8%8B%E8%BD%BD', icon: 'telegram' },
+    { name: 'X (Twitter)', href: 'https://x.com/intent/tweet?text=Telegram%E5%AE%98%E6%96%B9%E4%B8%8B%E8%BD%BD%E2%80%94%E2%80%94TG%E4%B8%8B%E8%BD%BD&url=https://tgxiazai.com', icon: 'x' },
+    { name: 'Facebook', href: 'https://www.facebook.com/sharer/sharer.php?u=https://tgxiazai.com', icon: 'facebook' },
+    { name: '微博', href: 'https://service.weibo.com/share/share.php?url=https://tgxiazai.com&title=Telegram%E5%AE%98%E6%96%B9%E4%B8%8B%E8%BD%BD', icon: 'weibo' },
   ],
 
   // ── 页脚 ──
