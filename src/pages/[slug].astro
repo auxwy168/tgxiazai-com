@@ -56,6 +56,19 @@ const related = articles
 
     <!-- Sidebar -->
     <aside class="art-side">
+      <!-- Download CTA Card -->
+      <a href="/articles/download/" class="sb-dl-card">
+        <div class="sb-dl-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline><line x1="12" y1="3" x2="12" y2="15"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg> 官方下载</div>
+        <h3 class="sb-dl-title">Telegram<br/>全平台下载</h3>
+        <p class="sb-dl-desc">Windows / macOS / Android / iOS<br/>100% 官方原版 · SHA256 校验</p>
+        <div class="sb-dl-platforms">
+          <span class="sb-dl-p"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+          <span class="sb-dl-p"><svg width="16" height="16" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/></svg></span>
+          <span class="sb-dl-p"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.6 12.16l-3.12 3.62a1.5 1.5 0 0 1-2.34-.19l-2.82-4.54a1.5 1.5 0 0 1 .89-2.22l3.01-.86a.5.5 0 0 0 .34-.36l.86-3.01a1.5 1.5 0 0 1 2.22-.89l4.54 2.82a1.5 1.5 0 0 1-.19 2.34l-3.62 3.12a.5.5 0 0 0-.06.71z"/></svg></span>
+        </div>
+        <span class="sb-dl-btn">查看下载 &rarr;</span>
+      </a>
+
       {related.length > 0 && (
         <div class="sb-card">
           <h4>相关教程</h4>
@@ -71,7 +84,7 @@ const related = articles
           <h4>热门标签</h4>
           <div class="trend-tags">
             {siteConfig.categories.map(c => (
-              <a href={`/articles/?category=${c.id}`}>{c.name}</a>
+              <a href={`/articles/${c.id}/`}>{c.name}</a>
             ))}
           </div>
         </div>
@@ -81,6 +94,100 @@ const related = articles
 </BaseLayout>
 
 <style>
+  /* Download CTA card */
+  .sb-dl-card {
+    display: block;
+    background: linear-gradient(135deg, #0088cc 0%, #00a8e8 40%, #00c6ff 100%);
+    border-radius: 14px;
+    padding: 24px 22px 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0,136,204,.25);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .sb-dl-card::after {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+  }
+  .sb-dl-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,136,204,.35);
+  }
+  .sb-dl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    background: rgba(255,255,255,.2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    color: rgba(255,255,255,.95);
+  }
+  .sb-dl-badge svg { stroke: currentColor; }
+  .sb-dl-title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+  }
+  .sb-dl-desc {
+    font-size: 12.5px;
+    line-height: 1.6;
+    opacity: .9;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+    color: rgba(255,255,255,.9);
+  }
+  .sb-dl-platforms {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .sb-dl-p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.15);
+    color: rgba(255,255,255,.85);
+  }
+  .sb-dl-p svg { stroke: currentColor; stroke-width: 1.8; fill: none; }
+  .sb-dl-btn {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    background: rgba(255,255,255,.95);
+    color: #0088cc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    transition: background .2s;
+  }
+  .sb-dl-card:hover .sb-dl-btn { background: #fff; }
+
   /* Article page overrides — scoped to this component */
   .art-wrap { max-width: 1100px; }
 </style>
