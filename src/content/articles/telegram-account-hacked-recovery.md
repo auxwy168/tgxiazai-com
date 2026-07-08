@@ -4,7 +4,7 @@ description: "你的Telegram账号可能已经被盗了——只是你还不知�
 keywords: "Telegram,账号安全,账号被盗,找回账号,Telegram恢复,账号异常,盗号恢复,账号保护"
 date: 2026-06-25
 lastmod: 2026-06-25
-category: "security"
+category: "safety"
 tags: ["账号安全"]
 coverImage: "/images/posts/telegram-account-hacked-recovery-1.webp"
 draft: false

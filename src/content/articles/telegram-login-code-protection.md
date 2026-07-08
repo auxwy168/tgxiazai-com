@@ -4,7 +4,7 @@ description: "Telegram登录验证码安全深度解析：SIM卡劫持（SIM Swa
 keywords: "Telegram,账号安全,验证码保护,登录验证码,SIM卡劫持,SIM Swapping,短信安全,防钓鱼"
 date: 2026-06-25
 lastmod: 2026-06-25
-category: "security"
+category: "safety"
 tags: ["账号安全"]
 coverImage: "/images/posts/telegram-login-code-protection-1.webp"
 draft: false

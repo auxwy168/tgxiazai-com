@@ -4,7 +4,7 @@ description: "2026最新Telegram隐私安全设置完全指南，从手机号隐
 keywords: "Telegram,隐私安全,Telegram隐私设置,手机号隐藏,在线状态隐身,Telegram隐身教程,账号隐私保护"
 date: 2026-06-25
 lastmod: 2026-06-25
-category: "privacy"
+category: "safety"
 tags: ["隐私设置"]
 coverImage: "/images/posts/telegram-privacy-settings-guide-1.webp"
 draft: false

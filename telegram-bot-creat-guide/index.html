@@ -1,0 +1,628 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Telegram Bot 机器人入门教程：从创建到部署</title><meta name="description" content="Telegram Bot 机器人零基础开发教程。通过 @BotFather 创建机器人、Bot API 基础概念、Webhook 与 Polling 模式对比、内联模式与键盘菜单配置、实用机器人推荐，以及 Python 和 Node.js 示例代码。"><meta name="keywords" content="Telegram,Telegram Bot,机器人教程,BotFather,Bot API,Webhook,Polling,内联模式,机器人开发,Python Telegram Bot"><link rel="canonical" href="https://tgxiazai.com/telegram-bot-creat-guide"><link rel="alternate" hreflang="zh-CN" href="https://tgxiazai.com/telegram-bot-creat-guide"><meta name="robots" content="index, follow"><!-- OG --><meta property="og:title" content="Telegram Bot 机器人入门教程：从创建到部署"><meta property="og:description" content="Telegram Bot 机器人零基础开发教程。通过 @BotFather 创建机器人、Bot API 基础概念、Webhook 与 Polling 模式对比、内联模式与键盘菜单配置、实用机器人推荐，以及 Python 和 Node.js 示例代码。"><meta property="og:url" content="https://tgxiazai.com/telegram-bot-creat-guide"><meta property="og:type" content="article"><meta property="og:image" content="https://tgxiazai.com/images/posts/telegram-bot-creat-guide-1.webp"><meta name="twitter:card" content="summary_large_image"><!-- 51.la Stats --><script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script><script type="module">LA.init({id:"3QUNVyaw3Yifp7yF",ck:"3QUNVyaw3Yifp7yF"});</script><!-- Favicon --><link rel="icon" type="image/svg+xml" href="/favicon.svg"><!-- Structured Data --><script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"Telegram Bot 机器人入门教程：从创建到部署","description":"Telegram Bot 机器人零基础开发教程。通过 @BotFather 创建机器人、Bot API 基础概念、Webhook 与 Polling 模式对比、内联模式与键盘菜单配置、实用机器人推荐，以及 Python 和 Node.js 示例代码。","url":"https://tgxiazai.com/telegram-bot-creat-guide","datePublished":"2026-07-07","dateModified":"2026-07-07","author":{"@type":"Organization","name":"TG下载"},"inLanguage":"zh-CN","image":"https://tgxiazai.com/images/posts/telegram-bot-creat-guide-1.webp"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://tgxiazai.com"},{"@type":"ListItem","position":2,"name":"Telegram Bot 机器人入门教程：从创建到部署"}]}]</script><style>.sb-dl-card[data-astro-cid-yvbahnfj]{display:block;background:linear-gradient(135deg,#0088cc 0%,#00a8e8 40%,#00c6ff 100%);border-radius:14px;padding:24px 22px 20px;margin-bottom:20px;text-decoration:none;overflow:hidden;position:relative;color:#fff;box-shadow:0 4px 20px rgba(0,136,204,.25);transition:transform .25s,box-shadow .25s}.sb-dl-card[data-astro-cid-yvbahnfj]::after{content:"";position:absolute;top:-50px;right:-50px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.06)}.sb-dl-card[data-astro-cid-yvbahnfj]:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,136,204,.35)}.sb-dl-badge[data-astro-cid-yvbahnfj]{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:6px;margin-bottom:14px;color:rgba(255,255,255,.95)}.sb-dl-badge[data-astro-cid-yvbahnfj] svg[data-astro-cid-yvbahnfj]{stroke:currentColor}.sb-dl-title[data-astro-cid-yvbahnfj]{font-size:22px;font-weight:800;line-height:1.3;margin-bottom:8px;position:relative;z-index:1;color:#fff}.sb-dl-desc[data-astro-cid-yvbahnfj]{font-size:12.5px;line-height:1.6;opacity:.9;margin-bottom:14px;position:relative;z-index:1;color:rgba(255,255,255,.9)}.sb-dl-platforms[data-astro-cid-yvbahnfj]{display:flex;gap:8px;margin-bottom:16px;position:relative;z-index:1}.sb-dl-p[data-astro-cid-yvbahnfj]{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.85)}.sb-dl-p[data-astro-cid-yvbahnfj] svg[data-astro-cid-yvbahnfj]{stroke:currentColor;stroke-width:1.8;fill:none}.sb-dl-btn[data-astro-cid-yvbahnfj]{display:block;text-align:center;padding:10px 0;background:rgba(255,255,255,.95);color:#0088cc;border-radius:8px;font-size:14px;font-weight:700;position:relative;z-index:1;transition:background .2s}.sb-dl-card[data-astro-cid-yvbahnfj]:hover .sb-dl-btn[data-astro-cid-yvbahnfj]{background:#fff}.art-wrap[data-astro-cid-yvbahnfj]{max-width:1100px}</style></head> <body> <!-- Nav --> <nav class="site-nav"> <div class="nav-inner"> <a href="/" class="nav-logo">TG下载</a> <div class="nav-links"> <a href="/">首页</a> <a href="/articles/">所有教程</a> <a href="/articles/download/">下载安装</a><a href="/articles/guide/">注册入门</a><a href="/articles/safety/">安全隐私</a><a href="/articles/tutorial/">功能教程</a><a href="/articles/compare/">对比评测</a><a href="/articles/proxy/">代理网络</a> </div> </div> </nav> <!-- Breadcrumb (article pages) --> <div class="breadcrumb"> <a href="/">首页</a> <span> &raquo; Telegram Bot 机器人入门教程：从创建到部署</span> </div> <main>  <div class="art-wrap" data-astro-cid-yvbahnfj> <article class="art-main" data-astro-cid-yvbahnfj> <h1 data-astro-cid-yvbahnfj>Telegram Bot 机器人入门教程：从创建到部署</h1> <div class="art-meta" data-astro-cid-yvbahnfj> <span data-astro-cid-yvbahnfj>📅 2026-07-07</span> <span class="art-tag tutorial" data-astro-cid-yvbahnfj>功能教程</span> </div> <div class="art-body" data-astro-cid-yvbahnfj> <img src="/images/posts/telegram-bot-creat-guide-1.webp" alt="Telegram Bot 机器人入门教程：从创建到部署" style="width:100%; border-radius:8px; margin-bottom:24px;" data-astro-cid-yvbahnfj> <p>你可能每天都在 Telegram 群里看到机器人发通知、验证新成员、推送 RSS 订阅——但你有没有想过自己写一个？哪怕你只会最基础的编程，半小时就能上线一个 Telegram 机器人。</p>
+<p>这篇文章从 @BotFather 注册讲到 Python 代码实战，目标是让你看完之后能自己跑起来一个 Bot。</p>
+<h2 id="什么是-telegram-bot">什么是 Telegram Bot</h2>
+<img src="/images/posts/telegram-bot-creat-guide-1.webp" alt="BotFather创建机器人界面" style="width:100%; border-radius:8px; margin:24px 0;">
+Telegram Bot 本质上是一个运行在服务器上的程序，通过 Telegram 的 Bot API 接收和发送消息。用户和 Bot 聊天时，消息不是直接发给了某个真人，而是发到了 Telegram 的服务器，服务器再转发给你写的程序，程序处理后再通过 API 回复用户。
+<p>Bot 能做：</p>
+<ul>
+<li>自动回复消息</li>
+<li>推送通知（RSS 订阅、价格提醒、服务器告警）</li>
+<li>入群验证（新人加群做 CAPTCHA）</li>
+<li>文件处理（图片压缩、格式转换）</li>
+<li>游戏交互（猜谜、答题）</li>
+<li>支付收款（Telegram 支持 Bot 内置支付）</li>
+</ul>
+<h2 id="第一步用-botfather-创建机器人">第一步：用 @BotFather 创建机器人</h2>
+<p>@BotFather 是所有 Telegram Bot 的总控制器。你要创建、修改、删除 Bot，都通过它操作。</p>
+<h3 id="创建流程">创建流程</h3>
+<ol>
+<li>在 Telegram 搜索 <code>@BotFather</code>，点击 Start 开始对话</li>
+<li>发送命令 <code>/newbot</code></li>
+<li>@BotFather 会问机器人名称（显示名称，可以中文，如”我的测试机器人”）</li>
+<li>输入显示名称后，@BotFather 会让你设置机器人的用户名（必须以 <code>bot</code> 结尾，如 <code>my_test_123_bot</code>）</li>
+<li>设置成功后，@BotFather 会返回一条消息，其中包含最重要的东西：</li>
+</ol>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Done! Congratulations on your new bot.</span></span>
+<span class="line"><span>...</span></span>
+<span class="line"><span>Use this token to access the HTTP API:</span></span>
+<span class="line"><span>1234567890:ABCdefGHIjklMNOpqrsTUVwxyz</span></span>
+<span class="line"><span>Keep your token secure and store it safely.</span></span></code></pre>
+<p>这个 Token 就是你的机器人的”密码”。有了它，你的程序就能控制这个 Bot。</p>
+<div class="warn-box">
+<strong>绝对不要泄露 Bot Token！</strong>任何人拿到这个 Token 都可以完全控制你的机器人——发送消息、踢出群成员、修改 Bot 设置。不要把 Token 贴到 GitHub 上，不要截图发给别人。如果不小心泄露了，立即用 @BotFather 的 <code>/revoke</code> 命令重置。
+</div>
+<h3 id="botfather-常用命令">@BotFather 常用命令</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>命令</th><th>功能</th></tr></thead><tbody><tr><td><code>/newbot</code></td><td>创建新 Bot</td></tr><tr><td><code>/mybots</code></td><td>列出和管理你的所有 Bot</td></tr><tr><td><code>/setname</code></td><td>修改 Bot 显示名称</td></tr><tr><td><code>/setdescription</code></td><td>修改 Bot 描述（用户点 Start 时显示）</td></tr><tr><td><code>/setabouttext</code></td><td>修改 Bot 简介（Bot 资料页显示）</td></tr><tr><td><code>/setuserpic</code></td><td>修改 Bot 头像</td></tr><tr><td><code>/setcommands</code></td><td>设置命令列表</td></tr><tr><td><code>/setjoingroups</code></td><td>允许/禁止 Bot 被拉入群组</td></tr><tr><td><code>/setinline</code></td><td>开启内联模式</td></tr><tr><td><code>/revoke</code></td><td>重置 Token</td></tr><tr><td><code>/deletebot</code></td><td>删除 Bot</td></tr></tbody></table>
+<p>做完这些基础配置后，你的 Bot 已经有了名称、头像和描述，但它现在什么都不会做——因为你还没有给它写”大脑”（程序）。</p>
+<h2 id="bot-api-基础概念">Bot API 基础概念</h2>
+<h3 id="消息获取的两种模式">消息获取的两种模式</h3>
+<p>程序要接收用户发给 Bot 的消息，有两种方式：</p>
+<p><strong>Polling（轮询/长轮询）：</strong>
+你的程序定期去 Telegram 服务器问：“有没有新消息？” 如果有，就拿回来处理。优点是实现简单、不需要公网域名；缺点是需要持续运行一个进程。</p>
+<p><strong>Webhook（回调）：</strong>
+你的程序提供一个 HTTPS 公网地址。每当用户给 Bot 发消息，Telegram 服务器主动把你的地址（POST 请求带消息数据）。优点是实时、省资源；缺点是需要一个公网可访问的 HTTPS 服务器。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>Polling</th><th>Webhook</th></tr></thead><tbody><tr><td>部署难度</td><td>低，本地可运行</td><td>高，需要 HTTPS 公网域名</td></tr><tr><td>实时性</td><td>稍有延迟（取决于轮询间隔）</td><td>近乎实时</td></tr><tr><td>资源消耗</td><td>持续占用进程</td><td>按请求消耗</td></tr><tr><td>适合场景</td><td>开发测试、个人 Bot</td><td>生产环境、高并发 Bot</td></tr></tbody></table>
+<h3 id="api-请求格式">API 请求格式</h3>
+<p>Telegram Bot API 的请求格式非常简洁：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>https://api.telegram.org/bot&#x3C;TOKEN>/&#x3C;METHOD></span></span></code></pre>
+<p>例如，用 <code>getMe</code> 方法获取 Bot 信息：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>GET https://api.telegram.org/bot1234567890:ABCdefGHIjklMNOpqrsTUVwxyz/getMe</span></span></code></pre>
+<p>返回的 JSON：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  "ok"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  "result"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    "id"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1234567890</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "is_bot"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "first_name"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"我的测试机器人"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "username"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"my_test_123_bot"</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="常用-api-方法">常用 API 方法</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方法</th><th>功能</th></tr></thead><tbody><tr><td><code>getMe</code></td><td>获取 Bot 基本信息</td></tr><tr><td><code>getUpdates</code></td><td>获取待处理的消息（Polling 用）</td></tr><tr><td><code>sendMessage</code></td><td>发送文本消息</td></tr><tr><td><code>sendPhoto</code></td><td>发送图片</td></tr><tr><td><code>sendDocument</code></td><td>发送文件</td></tr><tr><td><code>forwardMessage</code></td><td>转发消息</td></tr><tr><td><code>deleteMessage</code></td><td>删除消息</td></tr><tr><td><code>sendPoll</code></td><td>发送投票</td></tr><tr><td><code>setWebhook</code></td><td>设置 Webhook 地址</td></tr><tr><td><code>deleteWebhook</code></td><td>清除 Webhook 配置</td></tr></tbody></table>
+<p>完整的 API 文档在 Telegram 官网上有非常详细的说明，40 多个方法覆盖了消息、媒体、支付、游戏等各种场景。</p>
+<h2 id="实战python-编写-echo-bot">实战：Python 编写 Echo Bot</h2>
+<p>我们先写一个最简单的”回声机器人”——你说什么，它就重复什么。用 Python 和 <code>python-telegram-bot</code> 库。</p>
+<h3 id="安装依赖">安装依赖</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">pip</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> python-telegram-bot</span></span></code></pre>
+<h3 id="完整代码">完整代码</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> logging</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> telegram </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Update</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> telegram.ext </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Application, CommandHandler, MessageHandler, filters, ContextTypes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 开启日志</span></span>
+<span class="line"><span style="color:#E1E4E8">logging.basicConfig(</span></span>
+<span class="line"><span style="color:#FFAB70">    format</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">%(asctime)s</span><span style="color:#9ECBFF"> - </span><span style="color:#79B8FF">%(name)s</span><span style="color:#9ECBFF"> - </span><span style="color:#79B8FF">%(levelname)s</span><span style="color:#9ECBFF"> - </span><span style="color:#79B8FF">%(message)s</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">    level</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">logging.</span><span style="color:#79B8FF">INFO</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">logger </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> logging.getLogger(</span><span style="color:#79B8FF">__name__</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 替换为你的 Bot Token</span></span>
+<span class="line"><span style="color:#79B8FF">BOT_TOKEN</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "你的Token"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># /start 命令处理</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> start</span><span style="color:#E1E4E8">(update: Update, context: ContextTypes.</span><span style="color:#79B8FF">DEFAULT_TYPE</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#E1E4E8">    user </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> update.effective_user</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span></span>
+<span class="line"><span style="color:#F97583">        f</span><span style="color:#9ECBFF">"你好 </span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">user.first_name</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">！我是回声机器人。</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#F97583">        f</span><span style="color:#9ECBFF">"发送任何消息，我都会原样回复你。</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#F97583">        f</span><span style="color:#9ECBFF">"使用 /help 查看帮助。"</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># /help 命令处理</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> help_command</span><span style="color:#E1E4E8">(update: Update, context: ContextTypes.</span><span style="color:#79B8FF">DEFAULT_TYPE</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span></span>
+<span class="line"><span style="color:#9ECBFF">        "可用命令：</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "/start - 开始对话</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "/help - 查看帮助</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "/about - 关于我"</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># /about 命令处理</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> about</span><span style="color:#E1E4E8">(update: Update, context: ContextTypes.</span><span style="color:#79B8FF">DEFAULT_TYPE</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span></span>
+<span class="line"><span style="color:#9ECBFF">        "我是一个用 python-telegram-bot 库写的示例机器人。"</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 文本消息回声</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> echo</span><span style="color:#E1E4E8">(update: Update, context: ContextTypes.</span><span style="color:#79B8FF">DEFAULT_TYPE</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#E1E4E8">    user_text </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> update.message.text</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"你说：</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">user_text</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 非文本消息处理</span></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> non_text</span><span style="color:#E1E4E8">(update: Update, context: ContextTypes.</span><span style="color:#79B8FF">DEFAULT_TYPE</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span><span style="color:#9ECBFF">"收到了非文本消息（图片/文件/贴纸等），但我只会回文字。"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">():</span></span>
+<span class="line"><span style="color:#6A737D">    # 创建 Application</span></span>
+<span class="line"><span style="color:#E1E4E8">    app </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Application.builder().token(</span><span style="color:#79B8FF">BOT_TOKEN</span><span style="color:#E1E4E8">).build()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    # 注册命令处理器</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.add_handler(CommandHandler(</span><span style="color:#9ECBFF">"start"</span><span style="color:#E1E4E8">, start))</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.add_handler(CommandHandler(</span><span style="color:#9ECBFF">"help"</span><span style="color:#E1E4E8">, help_command))</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.add_handler(CommandHandler(</span><span style="color:#9ECBFF">"about"</span><span style="color:#E1E4E8">, about))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    # 注册消息处理器（注意顺序：命令处理在前，通用处理在后）</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.add_handler(MessageHandler(filters.</span><span style="color:#79B8FF">TEXT</span><span style="color:#F97583"> &#x26;</span><span style="color:#F97583"> ~</span><span style="color:#E1E4E8">filters.</span><span style="color:#79B8FF">COMMAND</span><span style="color:#E1E4E8">, echo))</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.add_handler(MessageHandler(</span><span style="color:#F97583">~</span><span style="color:#E1E4E8">filters.</span><span style="color:#79B8FF">TEXT</span><span style="color:#E1E4E8">, non_text))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">    # 开始 Polling</span></span>
+<span class="line"><span style="color:#E1E4E8">    logger.info(</span><span style="color:#9ECBFF">"Bot 启动中..."</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.run_polling(</span><span style="color:#FFAB70">allowed_updates</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">Update.</span><span style="color:#79B8FF">ALL_TYPES</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#79B8FF"> __name__</span><span style="color:#F97583"> ==</span><span style="color:#9ECBFF"> "__main__"</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    main()</span></span></code></pre>
+<h3 id="运行">运行</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">python</span><span style="color:#9ECBFF"> echo_bot.py</span></span></code></pre>
+<p>程序运行后，在 Telegram 中给你的 Bot 发消息，它会立即回复。这个例子用的是 Polling 模式，程序跑在你的本地电脑上就能工作。</p>
+<h3 id="代码拆解">代码拆解</h3>
+<ul>
+<li><code>Application.builder().token(BOT_TOKEN).build()</code> 创建 Bot 实例</li>
+<li><code>CommandHandler("start", start)</code> 注册 <code>/start</code> 命令的处理器</li>
+<li><code>MessageHandler(filters.TEXT, echo)</code> 匹配文本消息</li>
+<li><code>app.run_polling()</code> 开始长轮询</li>
+</ul>
+<p><code>python-telegram-bot</code> 是最流行的 Python Telegram Bot 框架，封装了所有 API 细节，推荐新手使用。</p>
+<h2 id="实战nodejs-编写-echo-bot">实战：Node.js 编写 Echo Bot</h2>
+<p>如果你用 Node.js 生态，可以用 <code>node-telegram-bot-api</code> 库。</p>
+<h3 id="安装">安装</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#B392F0">npm</span><span style="color:#9ECBFF"> install</span><span style="color:#9ECBFF"> node-telegram-bot-api</span></span></code></pre>
+<h3 id="完整代码-1">完整代码</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> TelegramBot</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> require</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'node-telegram-bot-api'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> TOKEN</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> '你的Token'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 创建 Bot 实例，使用 Polling</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> bot</span><span style="color:#F97583"> =</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> TelegramBot</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">TOKEN</span><span style="color:#E1E4E8">, { polling: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8"> });</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// /start 命令</span></span>
+<span class="line"><span style="color:#E1E4E8">bot.</span><span style="color:#B392F0">onText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#85E89D;font-weight:bold">\/</span><span style="color:#DBEDFF">start</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">msg</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> chatId</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> msg.chat.id;</span></span>
+<span class="line"><span style="color:#E1E4E8">  bot.</span><span style="color:#B392F0">sendMessage</span><span style="color:#E1E4E8">(chatId, </span><span style="color:#9ECBFF">`你好 ${</span><span style="color:#E1E4E8">msg</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">from</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">first_name</span><span style="color:#9ECBFF">}！我是用 Node.js 写的回声机器人。`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// /help 命令</span></span>
+<span class="line"><span style="color:#E1E4E8">bot.</span><span style="color:#B392F0">onText</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">/</span><span style="color:#85E89D;font-weight:bold">\/</span><span style="color:#DBEDFF">help</span><span style="color:#9ECBFF">/</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">msg</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> chatId</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> msg.chat.id;</span></span>
+<span class="line"><span style="color:#E1E4E8">  bot.</span><span style="color:#B392F0">sendMessage</span><span style="color:#E1E4E8">(chatId, </span><span style="color:#9ECBFF">'可用命令：</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">/start - 开始对话</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">/help - 查看帮助'</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// 文本回声</span></span>
+<span class="line"><span style="color:#E1E4E8">bot.</span><span style="color:#B392F0">on</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'message'</span><span style="color:#E1E4E8">, (</span><span style="color:#FFAB70">msg</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">=></span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> chatId</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> msg.chat.id;</span></span>
+<span class="line"><span style="color:#6A737D">  // 忽略命令</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (msg.text </span><span style="color:#F97583">&#x26;&#x26;</span><span style="color:#F97583"> !</span><span style="color:#E1E4E8">msg.text.</span><span style="color:#B392F0">startsWith</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'/'</span><span style="color:#E1E4E8">)) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    bot.</span><span style="color:#B392F0">sendMessage</span><span style="color:#E1E4E8">(chatId, </span><span style="color:#9ECBFF">`你说：${</span><span style="color:#E1E4E8">msg</span><span style="color:#9ECBFF">.</span><span style="color:#E1E4E8">text</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">'Bot 启动中...'</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<div class="info-box">
+<strong>对比：</strong>Node.js 版本代码更简短，但 Python 的 <code>python-telegram-bot</code> 框架功能更完善（支持中间件、对话流程、JobQueue 定时任务等）。如果你要写复杂 Bot，推荐 Python；如果只是简单自动化，Node.js 足够。
+</div>
+<h2 id="内联模式inline-mode">内联模式（Inline Mode）</h2>
+<p>内联模式是 Telegram Bot 的一个独特功能：用户在任何聊天中输入 <code>@你的Bot名 关键词</code>，就能调用你的 Bot 并获得结果，而不需要进入 Bot 的私聊。</p>
+<h3 id="开启内联模式">开启内联模式</h3>
+<p>和 @BotFather 对话：<code>/setinline</code> → 选择你的 Bot → 输入提示文字（如”输入关键词搜索”）→ 完成。</p>
+<h3 id="内联模式的典型用途">内联模式的典型用途</h3>
+<ul>
+<li><strong>@gif</strong>：输入 <code>@gif cat</code>，在聊天中直接搜索和发送 GIF</li>
+<li><strong>@wiki</strong>：输入 <code>@wiki Telegram</code>，快速查询 Wikipedia 条目</li>
+<li><strong>@imdb</strong>：输入 <code>@imdb Inception</code>，查找电影信息</li>
+<li><strong>@youtube</strong>：搜索和发送 YouTube 视频</li>
+</ul>
+<h3 id="python-内联查询示例">Python 内联查询示例</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> telegram </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> InlineQueryResultArticle, InputTextMessageContent</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> telegram.ext </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> InlineQueryHandler</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> inline_query</span><span style="color:#E1E4E8">(update, context):</span></span>
+<span class="line"><span style="color:#E1E4E8">    query </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> update.inline_query.query</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#F97583"> not</span><span style="color:#E1E4E8"> query:</span></span>
+<span class="line"><span style="color:#F97583">        return</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">    results </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">        InlineQueryResultArticle(</span></span>
+<span class="line"><span style="color:#FFAB70">            id</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"1"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">            title</span><span style="color:#F97583">=</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"搜索：</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">query</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">            input_message_content</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">InputTextMessageContent(</span></span>
+<span class="line"><span style="color:#F97583">                f</span><span style="color:#9ECBFF">"你搜索了「</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">query</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">」，这是结果。"</span></span>
+<span class="line"><span style="color:#E1E4E8">            ),</span></span>
+<span class="line"><span style="color:#FFAB70">            description</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"点击发送这条消息"</span></span>
+<span class="line"><span style="color:#E1E4E8">        )</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.inline_query.answer(results)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 注册处理器</span></span>
+<span class="line"><span style="color:#E1E4E8">app.add_handler(InlineQueryHandler(inline_query))</span></span></code></pre>
+<p>用户在任何聊天输入 <code>@你的Bot 你好</code> 后，系统会显示你定义的结果卡片，点击即可发送。</p>
+<h2 id="键盘菜单">键盘菜单</h2>
+<p>Bot 可以定制两种键盘，替代纯文本输入，大大提升交互体验。</p>
+<h3 id="自定义键盘replykeyboardmarkup">自定义键盘（ReplyKeyboardMarkup）</h3>
+<p>显示在输入框上方的按钮，像快捷回复一样。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> telegram </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> ReplyKeyboardMarkup</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> start</span><span style="color:#E1E4E8">(update, context):</span></span>
+<span class="line"><span style="color:#E1E4E8">    keyboard </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">        [</span><span style="color:#9ECBFF">"📰 最新消息"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"📅 每日推送"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">        [</span><span style="color:#9ECBFF">"ℹ️ 关于我们"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"🆘 帮助"</span><span style="color:#E1E4E8">],</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">    reply_markup </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> ReplyKeyboardMarkup(</span></span>
+<span class="line"><span style="color:#E1E4E8">        keyboard,</span></span>
+<span class="line"><span style="color:#FFAB70">        resize_keyboard</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">,  </span><span style="color:#6A737D"># 自动调整大小</span></span>
+<span class="line"><span style="color:#FFAB70">        one_time_keyboard</span><span style="color:#F97583">=</span><span style="color:#79B8FF">False</span><span style="color:#6A737D">  # 持久显示</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span></span>
+<span class="line"><span style="color:#9ECBFF">        "请选择一个功能："</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#FFAB70">        reply_markup</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">reply_markup</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span></code></pre>
+<h3 id="内联键盘inlinekeyboardmarkup">内联键盘（InlineKeyboardMarkup）</h3>
+<p>显示在消息下方的按钮，点击后向 Bot 发送回调数据。</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> telegram </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> InlineKeyboardButton, InlineKeyboardMarkup</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> menu</span><span style="color:#E1E4E8">(update, context):</span></span>
+<span class="line"><span style="color:#E1E4E8">    keyboard </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> [</span></span>
+<span class="line"><span style="color:#E1E4E8">        [</span></span>
+<span class="line"><span style="color:#E1E4E8">            InlineKeyboardButton(</span><span style="color:#9ECBFF">"选项 A"</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">callback_data</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"option_a"</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">            InlineKeyboardButton(</span><span style="color:#9ECBFF">"选项 B"</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">callback_data</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"option_b"</span><span style="color:#E1E4E8">),</span></span>
+<span class="line"><span style="color:#E1E4E8">        ],</span></span>
+<span class="line"><span style="color:#E1E4E8">        [InlineKeyboardButton(</span><span style="color:#9ECBFF">"🌐 打开网站"</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">url</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"https://tgxiazai.com"</span><span style="color:#E1E4E8">)],</span></span>
+<span class="line"><span style="color:#E1E4E8">    ]</span></span>
+<span class="line"><span style="color:#E1E4E8">    reply_markup </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> InlineKeyboardMarkup(keyboard)</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span><span style="color:#9ECBFF">"请选择："</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">reply_markup</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">reply_markup)</span></span></code></pre>
+<h3 id="两种键盘对比">两种键盘对比</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th>自定义键盘</th><th>内联键盘</th></tr></thead><tbody><tr><td>位置</td><td>输入框上方</td><td>消息下方</td></tr><tr><td>交互</td><td>发送预设文字</td><td>触发回调/打开链接</td></tr><tr><td>持久性</td><td>始终显示直到手动关闭</td><td>仅在当前消息下</td></tr><tr><td>适合场景</td><td>快捷菜单、功能导航</td><td>投票、确认、链接跳转</td></tr></tbody></table>
+<h2 id="webhook-部署">Webhook 部署</h2>
+<p>当你的 Bot 需要在生产环境 24 小时运行时，Polling 不太合适。Webhook 是更好的选择。</p>
+<h3 id="使用-flask-部署-python-botwebhook-模式">使用 Flask 部署 Python Bot（Webhook 模式）</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> flask </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Flask, request</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> telegram</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">TOKEN</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> "你的Token"</span></span>
+<span class="line"><span style="color:#E1E4E8">bot </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> telegram.Bot(</span><span style="color:#FFAB70">token</span><span style="color:#F97583">=</span><span style="color:#79B8FF">TOKEN</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">app </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> Flask(</span><span style="color:#79B8FF">__name__</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@app.route</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"/</span><span style="color:#79B8FF">{TOKEN}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">methods</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">[</span><span style="color:#9ECBFF">"POST"</span><span style="color:#E1E4E8">])</span></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> webhook</span><span style="color:#E1E4E8">():</span></span>
+<span class="line"><span style="color:#E1E4E8">    update </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> telegram.Update.de_json(request.get_json(</span><span style="color:#FFAB70">force</span><span style="color:#F97583">=</span><span style="color:#79B8FF">True</span><span style="color:#E1E4E8">), bot)</span></span>
+<span class="line"><span style="color:#6A737D">    # 处理消息</span></span>
+<span class="line"><span style="color:#F97583">    if</span><span style="color:#E1E4E8"> update.message </span><span style="color:#F97583">and</span><span style="color:#E1E4E8"> update.message.text:</span></span>
+<span class="line"><span style="color:#E1E4E8">        chat_id </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> update.message.chat.id</span></span>
+<span class="line"><span style="color:#E1E4E8">        bot.send_message(</span><span style="color:#FFAB70">chat_id</span><span style="color:#F97583">=</span><span style="color:#E1E4E8">chat_id, </span><span style="color:#FFAB70">text</span><span style="color:#F97583">=</span><span style="color:#F97583">f</span><span style="color:#9ECBFF">"收到：</span><span style="color:#79B8FF">{</span><span style="color:#E1E4E8">update.message.text</span><span style="color:#79B8FF">}</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#9ECBFF"> "ok"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#79B8FF"> __name__</span><span style="color:#F97583"> ==</span><span style="color:#9ECBFF"> "__main__"</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#6A737D">    # 先设置 Webhook（运行一次即可）</span></span>
+<span class="line"><span style="color:#6A737D">    # bot.set_webhook(url="https://你的域名.com/" + TOKEN)</span></span>
+<span class="line"><span style="color:#E1E4E8">    app.run(</span><span style="color:#FFAB70">host</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"0.0.0.0"</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">port</span><span style="color:#F97583">=</span><span style="color:#79B8FF">8443</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<h3 id="部署平台推荐">部署平台推荐</h3>
+<ul>
+<li><strong>Vercel / Netlify</strong>：免费 Serverless，适合轻量 Bot</li>
+<li><strong>Railway / Render</strong>：免费额度，适合 Python/Node.js Bot</li>
+<li><strong>自己的 VPS</strong>：最灵活，也最稳定</li>
+</ul>
+<h2 id="bot-命令设置">Bot 命令设置</h2>
+<p>通过 @BotFather 设置命令列表，用户输入 <code>/</code> 时会自动提示：</p>
+<p>发送 <code>/setcommands</code> → 选择 Bot → 输入命令列表：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>start - 开始使用</span></span>
+<span class="line"><span>help - 查看帮助</span></span>
+<span class="line"><span>menu - 功能菜单</span></span>
+<span class="line"><span>about - 关于本 Bot</span></span>
+<span class="line"><span>settings - 设置</span></span></code></pre>
+<h2 id="隐私模式">隐私模式</h2>
+<p>Telegram Bot 默认启用隐私模式（Privacy Mode）。在隐私模式下：</p>
+<ul>
+<li>Bot 只能收到以 <code>/</code> 开头的命令，或以 Bot 用户名为后缀的命令（如 <code>/start@mybot</code>）</li>
+<li>Bot 收不到群组中不以它为目标的消息</li>
+</ul>
+<p>通过 @BotFather 的 <code>/setprivacy</code> 可以切换。如果你需要 Bot 能读取群组中的所有消息（如反垃圾机器人），关闭隐私模式。</p>
+<p>如果关闭隐私模式，Bot 需要重新加入已有群组才能生效（权限变更不回溯）。</p>
+<h2 id="常用机器人推荐">常用机器人推荐</h2>
+<p>在你自己开发之前，先看看 Telegram 已有的优秀 Bot：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Bot</th><th>功能</th><th>用户名</th></tr></thead><tbody><tr><td>贴纸搜索</td><td>搜索和推荐贴纸包</td><td>@Stickers</td></tr><tr><td>Gmail 通知</td><td>新邮件推送到 Telegram</td><td>@GmailBot</td></tr><tr><td>投票创建</td><td>群内创建多种投票</td><td>@PollBot</td></tr><tr><td>RSS 订阅</td><td>订阅 RSS 推送到频道/私聊</td><td>@TheFeedReaderBot</td></tr><tr><td>文件转换</td><td>图片/文档格式转换</td><td>@newfileconverterbot</td></tr><tr><td>翻译</td><td>内联翻译</td><td>@TranslateFatherBot</td></tr><tr><td>天气查询</td><td>查询全球城市天气</td><td>@weatherman_bot</td></tr><tr><td>汇率换算</td><td>实时汇率查询</td><td>@mycurrencybot</td></tr></tbody></table>
+<div class="info-box">
+<strong>交互示范：</strong>和 @GmailBot 聊天，点击 Start，它会引导你授权 Gmail 账户。之后每次收到新邮件，Bot 都会把邮件摘要推送到 Telegram。整个过程不需要写一行代码——这就是 Bot 生态的力量。
+</div>
+<p>想深入了解 Bot 在群组管理中的应用，可以看 <a href="/tutorial/telegram-group-features-guide/">Telegram 群组功能详解</a>。如果你是 Telegram 新手，先打好基础——看 <a href="/tutorial/telegram-beginner-complete-guide/">Telegram 新手入门完全指南</a>。</p>
+<h2 id="消息格式化与-markdown">消息格式化与 Markdown</h2>
+<p>Bot 发送的消息支持 Markdown 格式和 HTML 格式，让你的回复不再只是干巴巴的文字。</p>
+<h3 id="markdownv2-示例">MarkdownV2 示例</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> formatted_message</span><span style="color:#E1E4E8">(update, context):</span></span>
+<span class="line"><span style="color:#E1E4E8">    text </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">        "*加粗标题*</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "_斜体文字_</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "__下划线__</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "~删除线~</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "||剧透内容||</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "`行内代码`</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">        "```</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">代码块</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">```"</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span>
+<span class="line"><span style="color:#F97583">    await</span><span style="color:#E1E4E8"> update.message.reply_text(</span></span>
+<span class="line"><span style="color:#E1E4E8">        text,</span></span>
+<span class="line"><span style="color:#FFAB70">        parse_mode</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"MarkdownV2"</span></span>
+<span class="line"><span style="color:#E1E4E8">    )</span></span></code></pre>
+<h3 id="注意事项">注意事项</h3>
+<p>使用 MarkdownV2 时，所有特殊字符（<code>. ! ( ) - _ ~</code> 等）必须用 <code>\</code> 转义，否则消息发送会失败。推荐使用 <code>python-telegram-bot</code> 提供的 <code>escape_markdown()</code> 辅助函数来处理用户输入中的特殊字符。</p>
+<p>HTML 格式的语法更宽容，不需要转义：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#E1E4E8">text </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "&#x3C;b>加粗&#x3C;/b> &#x3C;i>斜体&#x3C;/i> &#x3C;u>下划线&#x3C;/u> &#x3C;code>代码&#x3C;/code>"</span></span>
+<span class="line"><span style="color:#F97583">await</span><span style="color:#E1E4E8"> update.message.reply_text(text, </span><span style="color:#FFAB70">parse_mode</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"HTML"</span><span style="color:#E1E4E8">)</span></span></code></pre>
+<p>如果你需要发送格式复杂的消息（如新闻摘要），HTML 模式通常比 MarkdownV2 更容易调试。</p>
+<h2 id="bot-安全最佳实践">Bot 安全最佳实践</h2>
+<p>一旦你的 Bot 开始服务真实用户，安全问题就是头等大事。</p>
+<h3 id="token-管理">Token 管理</h3>
+<ul>
+<li>永远不要把 Token 硬编码在源代码中，使用环境变量：
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> os</span></span>
+<span class="line"><span style="color:#79B8FF">TOKEN</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> os.environ.get(</span><span style="color:#9ECBFF">"BOT_TOKEN"</span><span style="color:#E1E4E8">)</span></span></code></pre>
+</li>
+<li><code>.gitignore</code> 中排除 <code>.env</code> 文件</li>
+<li>如果 Token 曾经出现在 Git 历史中，用 @BotFather <code>/revoke</code> 重置</li>
+</ul>
+<h3 id="输入验证">输入验证</h3>
+<p>用户发送的任何内容都要做校验，尤其是：</p>
+<ul>
+<li>作为文件名或系统命令参数的内容（防路径遍历攻击）</li>
+<li>作为数据库查询的内容（防注入攻击）</li>
+<li>作为 HTML/Markdown 输出的内容（防格式注入）</li>
+</ul>
+<h3 id="速率限制">速率限制</h3>
+<p>在 Bot 代码中实现速率限制，防止单个用户疯狂调用你的 Bot：</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> functools </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> wraps</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> time</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">user_last_request </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> {}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">def</span><span style="color:#B392F0"> rate_limit</span><span style="color:#E1E4E8">(max_per_second</span><span style="color:#F97583">=</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">):</span></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> decorator</span><span style="color:#E1E4E8">(func):</span></span>
+<span class="line"><span style="color:#B392F0">        @wraps</span><span style="color:#E1E4E8">(func)</span></span>
+<span class="line"><span style="color:#F97583">        async</span><span style="color:#F97583"> def</span><span style="color:#B392F0"> wrapper</span><span style="color:#E1E4E8">(update, context, </span><span style="color:#F97583">*</span><span style="color:#E1E4E8">args, </span><span style="color:#F97583">**</span><span style="color:#E1E4E8">kwargs):</span></span>
+<span class="line"><span style="color:#E1E4E8">            user_id </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> update.effective_user.id</span></span>
+<span class="line"><span style="color:#E1E4E8">            now </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> time.time()</span></span>
+<span class="line"><span style="color:#F97583">            if</span><span style="color:#E1E4E8"> user_id </span><span style="color:#F97583">in</span><span style="color:#E1E4E8"> user_last_request:</span></span>
+<span class="line"><span style="color:#E1E4E8">                elapsed </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> now </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> user_last_request[user_id]</span></span>
+<span class="line"><span style="color:#F97583">                if</span><span style="color:#E1E4E8"> elapsed </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 1.0</span><span style="color:#F97583"> /</span><span style="color:#E1E4E8"> max_per_second:</span></span>
+<span class="line"><span style="color:#F97583">                    return</span><span style="color:#6A737D">  # 静默忽略</span></span>
+<span class="line"><span style="color:#E1E4E8">            user_last_request[user_id] </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> now</span></span>
+<span class="line"><span style="color:#F97583">            return</span><span style="color:#F97583"> await</span><span style="color:#E1E4E8"> func(update, context, </span><span style="color:#F97583">*</span><span style="color:#E1E4E8">args, </span><span style="color:#F97583">**</span><span style="color:#E1E4E8">kwargs)</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#E1E4E8"> wrapper</span></span>
+<span class="line"><span style="color:#F97583">    return</span><span style="color:#E1E4E8"> decorator</span></span></code></pre>
+<h3 id="最小权限原则">最小权限原则</h3>
+<p>如果使用 @BotFather 设置 Bot 权限时，只开启你的 Bot 真正需要的功能。不需要内联模式？别开。不需要加入群组？关掉。不需要读取群消息？保持隐私模式。每个额外的权限都是潜在的攻击面。</p>
+<h2 id="进阶学习路径">进阶学习路径</h2>
+<p>Bot 开发的上限很高。以下是你练完 Echo Bot 之后可以探索的方向：</p>
+<ol>
+<li><strong>对话流程（ConversationHandler）</strong>：构建多步骤对话，如问卷调查、注册流程</li>
+<li><strong>JobQueue 定时任务</strong>：每天定时推送新闻、提醒等</li>
+<li><strong>数据库集成</strong>：用 SQLite/PostgreSQL 存储用户数据和状态</li>
+<li><strong>支付集成</strong>：Telegram 内置支付 API，Bot 可以直接收款</li>
+<li><strong>Web App</strong>：在 Telegram 内打开你的网页应用（Telegram Mini App）</li>
+<li><strong>游戏开发</strong>：用 HTML5 写 Bot 游戏</li>
+</ol>
+<img src="/images/posts/telegram-bot-creat-guide-2.webp" alt="Telegram Bot功能展示" style="width:100%; border-radius:8px; margin:24px 0;">
+<h2 id="常见问题-faq">常见问题 FAQ</h2>
+<div class="faq-list">
+<div class="faq-item">
+<div class="faq-q">Q：一个 Telegram 账号可以创建多少个 Bot？<span class="faq-arrow">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">A：每个 Telegram 账号最多创建 20 个 Bot。如果不够用，可以用其他手机号注册新账号再创建。</div></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：Bot 可以主动给用户发消息吗？<span class="faq-arrow">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">A：可以，但有限制。Bot 可以主动向曾经和它互动过的用户（发过/start 或任何消息）发送消息。但不能给从未互动过的用户发消息（反垃圾设计）。群组中，Bot 可以主动向群组发送消息。超过 24 小时未互动的用户，Bot 只能用特定类型消息联系（如通过内联查询）。</div></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：Bot 怎么收费？<span class="faq-arrow">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">A：Telegram Bot API 完全免费。你的成本只有：运行 Bot 程序所需的服务器费用。轻量 Bot（每天几百次请求）用免费平台（Vercel、Render 免费版）即可零成本运行。</div></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：Bot 的消息频率有限制吗？<span class="faq-arrow">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">A：有限制。每个 Bot 每秒最多发送约 30 条消息到不同的聊天；同一个聊天中每秒最多约 1 条消息。超过限制会触发 429 Too Many Requests 错误，需要稍后重试。消息总量没有日上限。</div></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：Bot 没有被拉入群组也能在群里发消息吗？<span class="faq-arrow">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">A：不能。Bot 必须被拉入群组（并且拥有发送消息权限）才能在群里发消息。这是 Telegram 的安全设计，防止 Bot 在未授权的群中发布垃圾信息。</div></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：我的 Bot 为什么不回复消息？<span class="faq-arrow">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">A：常见原因排查：① 程序没有在运行（检查终端/服务器状态）；② Token 错误（用 @BotFather /revoke 重置再试）；③ 群组中隐私模式未关闭（Bot 收不到群消息）；④ Webhook URL 设置错误或无法访问；⑤ 代码逻辑问题（检查日志）。建议先用 Polling 模式在本地调试，确认没问题后再部署 Webhook。</div></div>
+</div>
+<div class="faq-item">
+<div class="faq-q">Q：Bot 可以收款吗？<span class="faq-arrow">▼</span></div>
+<div class="faq-a"><div class="faq-a-inner">A：可以。Telegram 内置了 Bot Payment API，支持通过 Stripe、YooMoney 等多种支付提供商收款。用户在 Bot 内点击"支付"按钮即可完成付款。需要使用 @BotFather 的 /mybots → Payments 配置支付提供商。</div></div>
+</div>
+</div>
+<hr>
+<p>Telegram Bot 是一个门槛很低但天花板很高的领域。写一个 Echo Bot 只需要 10 行代码，但一个成熟的 Bot 可以管理百万级社群、处理支付订单、完成复杂的自动化任务。从哪里开始不重要，开始了才重要。</p> </div> </article> <!-- Sidebar --> <aside class="art-side" data-astro-cid-yvbahnfj> <!-- Download CTA Card --> <a href="/articles/download/" class="sb-dl-card" data-astro-cid-yvbahnfj> <div class="sb-dl-badge" data-astro-cid-yvbahnfj><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" data-astro-cid-yvbahnfj><polyline points="6 9 12 15 18 9" data-astro-cid-yvbahnfj></polyline><line x1="12" y1="3" x2="12" y2="15" data-astro-cid-yvbahnfj></line><line x1="4" y1="17" x2="20" y2="17" data-astro-cid-yvbahnfj></line></svg> 官方下载</div> <h3 class="sb-dl-title" data-astro-cid-yvbahnfj>Telegram<br data-astro-cid-yvbahnfj>全平台下载</h3> <p class="sb-dl-desc" data-astro-cid-yvbahnfj>Windows / macOS / Android / iOS<br data-astro-cid-yvbahnfj>100% 官方原版 · SHA256 校验</p> <div class="sb-dl-platforms" data-astro-cid-yvbahnfj> <span class="sb-dl-p" data-astro-cid-yvbahnfj><svg width="16" height="16" viewBox="0 0 24 24" data-astro-cid-yvbahnfj><rect x="2" y="3" width="20" height="14" rx="2" data-astro-cid-yvbahnfj></rect><line x1="8" y1="21" x2="16" y2="21" data-astro-cid-yvbahnfj></line><line x1="12" y1="17" x2="12" y2="21" data-astro-cid-yvbahnfj></line></svg></span> <span class="sb-dl-p" data-astro-cid-yvbahnfj><svg width="16" height="16" viewBox="0 0 24 24" data-astro-cid-yvbahnfj><rect x="5" y="2" width="14" height="20" rx="2" data-astro-cid-yvbahnfj></rect><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5" data-astro-cid-yvbahnfj></line></svg></span> <span class="sb-dl-p" data-astro-cid-yvbahnfj><svg width="16" height="16" viewBox="0 0 24 24" data-astro-cid-yvbahnfj><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.6 12.16l-3.12 3.62a1.5 1.5 0 0 1-2.34-.19l-2.82-4.54a1.5 1.5 0 0 1 .89-2.22l3.01-.86a.5.5 0 0 0 .34-.36l.86-3.01a1.5 1.5 0 0 1 2.22-.89l4.54 2.82a1.5 1.5 0 0 1-.19 2.34l-3.62 3.12a.5.5 0 0 0-.06.71z" data-astro-cid-yvbahnfj></path></svg></span> </div> <span class="sb-dl-btn" data-astro-cid-yvbahnfj>查看下载 &rarr;</span> </a> <div class="sb-card" data-astro-cid-yvbahnfj> <h4 data-astro-cid-yvbahnfj>相关教程</h4> <a href="/telegram-beginner-complete-guide/" class="sb-rel-item" data-astro-cid-yvbahnfj> <h5 data-astro-cid-yvbahnfj>Telegram 新手入门完全指南：从下载到精通（2026 最新版）</h5> </a><a href="/telegram-channel-create-guide/" class="sb-rel-item" data-astro-cid-yvbahnfj> <h5 data-astro-cid-yvbahnfj>Telegram 频道创建与运营教程（2026 最新版）</h5> </a><a href="/telegram-file-transfer-cloud-storage/" class="sb-rel-item" data-astro-cid-yvbahnfj> <h5 data-astro-cid-yvbahnfj>Telegram 文件传输与云存储：无限空间怎么用</h5> </a><a href="/telegram-group-features-guide/" class="sb-rel-item" data-astro-cid-yvbahnfj> <h5 data-astro-cid-yvbahnfj>Telegram 群组功能详解：200,000 人超级群怎么用</h5> </a> </div> <div class="sb-card" data-astro-cid-yvbahnfj> <h4 data-astro-cid-yvbahnfj>热门标签</h4> <div class="trend-tags" data-astro-cid-yvbahnfj> <a href="/articles/download/" data-astro-cid-yvbahnfj>下载安装</a><a href="/articles/guide/" data-astro-cid-yvbahnfj>注册入门</a><a href="/articles/safety/" data-astro-cid-yvbahnfj>安全隐私</a><a href="/articles/tutorial/" data-astro-cid-yvbahnfj>功能教程</a><a href="/articles/compare/" data-astro-cid-yvbahnfj>对比评测</a><a href="/articles/proxy/" data-astro-cid-yvbahnfj>代理网络</a> </div> </div> </aside> </div>  </main> <!-- Footer --> <footer class="site-footer"> <div class="footer-inner"> <div class="footer-brand"> <div class="footer-logo">TG下载</div> <p class="footer-desc">TG下载（tgxiazai.com）是独立的Telegram中文教程与下载导航站点，非Telegram官方。所有下载链接均指向 telegram.org 官方服务器。</p> <span class="footer-badge">📚 独立教程网站</span> <div class="footer-social"> <a href="https://t.me/" class="soc-telegram" target="_blank" rel="nofollow noopener noreferrer" title="Telegram" aria-label="Telegram"> <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.66-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.41-.88.03-.24.37-.49 1.02-.74 3.98-1.73 6.63-2.88 7.96-3.43 3.79-1.57 4.57-1.85 5.08-1.86.11 0 .37.03.54.16.14.11.18.26.2.38.02.12.04.39.02.54z"></path></svg>     </a><a href="https://x.com/" class="soc-x" target="_blank" rel="nofollow noopener noreferrer" title="X (Twitter)" aria-label="X (Twitter)">  <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>    </a><a href="https://youtube.com/" class="soc-youtube" target="_blank" rel="nofollow noopener noreferrer" title="YouTube" aria-label="YouTube">   <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg>   </a><a href="https://facebook.com/" class="soc-facebook" target="_blank" rel="nofollow noopener noreferrer" title="Facebook" aria-label="Facebook">    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>  </a><a href="https://weibo.com/" class="soc-weibo" target="_blank" rel="nofollow noopener noreferrer" title="微博" aria-label="微博">     <svg viewBox="0 0 24 24"><path d="M10.098 20.323c-3.977.391-7.414-1.406-7.672-4.02-.259-2.609 2.759-5.047 6.74-5.441 3.979-.394 7.413 1.404 7.671 4.018.259 2.6-2.759 5.049-6.739 5.443zm1.146-6.014c-1.642-.161-3.296.416-3.691 1.291-.396.876.685 1.828 2.326 1.99 1.642.161 3.296-.416 3.691-1.291.396-.876-.685-1.829-2.326-1.99zm2.164-1.209c-.206-.041-.278-.11-.169-.33.073-.148.263-.481.169-.688-.225-.528-1.315-.517-2.431-.056-.139.058-.204.058-.279-.05-.169-.273-.404-1.267-.317-1.748.058-.322.454-.598 1.129-.714.935-.162 2.106.166 2.525.643.285.323.387.877.201 1.149-.146.216-.476.33-.828.261v.003zm2.575-6.321c-3.881-1.933-8.365-1.091-10.192 1.656-.885 1.328-1.097 3.215-.508 4.903.081.23.028.347-.149.37-.013-.003-.03 0-.048-.003-1.997-.315-3.545-1.876-4.009-3.844-.443-1.893.202-3.903 1.476-5.314 3.23-3.586 9.625-3.792 13.411-.806 1.35 1.063 2.101 2.399 2.431 3.816.067.287-.119.43-.285.347-.117-.057-.308-.196-.408-.384-.195-.383-.413-.743-.701-1.092v-.001l-.318-.348z"></path></svg> </a> </div> </div> <div class="footer-col"> <h4>快速导航</h4> <ul> <li><a href="/">首页</a></li> <li><a href="/articles/">所有教程</a></li> <li><a href="/about/">关于我们</a></li> <li><a href="/sitemap/">网站地图</a></li> </ul> </div> <div class="footer-col"> <h4>教程分类</h4> <ul> <li><a href="/articles/download/">下载安装</a></li><li><a href="/articles/guide/">注册入门</a></li><li><a href="/articles/safety/">安全隐私</a></li><li><a href="/articles/tutorial/">功能教程</a></li><li><a href="/articles/compare/">对比评测</a></li><li><a href="/articles/proxy/">代理网络</a></li> </ul> </div> <div class="footer-col"> <h4>支持</h4> <ul> <li><a href="/contact/">联系我们</a></li> <li><a href="/privacy/">隐私政策</a></li> </ul> </div> </div> <div class="footer-bottom"> <p>&copy; 2026 TG下载. All rights reserved.</p> </div> </footer> <!-- Inject global CSS (plain <style> avoids Astro's CSS processing) --> <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Noto Sans SC',sans-serif;background:#ffffff;color:#1a1a2e;line-height:1.6}a{color:#0088cc;text-decoration:none}a:hover{color:#00a8e8}.site-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06);padding:0 24px}.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}.nav-logo{font-size:18px;font-weight:700;color:#0088cc;text-decoration:none}.nav-links{display:flex;gap:24px}.nav-links a{font-size:14px;color:#475569;text-decoration:none;transition:color .2s}.nav-links a:hover,.nav-links a.active{color:#0088cc}.breadcrumb{max-width:1100px;margin:0 auto;padding:16px 24px 0;font-size:13px;color:#94a3b8}.breadcrumb a{color:#0088cc;text-decoration:none}.art-wrap{max-width:1100px;margin:0 auto;padding:24px;display:flex;gap:32px}.art-main{flex:1;min-width:0;background:#fff;border-radius:12px;padding:40px;box-shadow:0 1px 3px rgba(0,0,0,.04)}.art-main h1{font-size:28px;font-weight:800;line-height:1.4;margin-bottom:16px;color:#1a1a2e}.art-meta{display:flex;gap:16px;align-items:center;margin-bottom:24px;font-size:13px;color:#94a3b8}.art-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px}.art-tag.download{background:#e0f2fe;color:#0369a1}.art-tag.guide{background:#ecfdf5;color:#065f46}.art-tag.safety{background:#fef3c7;color:#92400e}.art-tag.tutorial{background:#f3e8ff;color:#7c3aed}.art-tag.compare{background:#fce7f3;color:#be185d}.art-tag.proxy{background:#e0f2fe;color:#0891b2}.art-body{font-size:15px;line-height:1.9;color:#475569}.art-body h2{font-size:22px;font-weight:700;margin:36px 0 16px;color:#1a1a2e}.art-body h3{font-size:18px;font-weight:600;margin:28px 0 12px;color:#1a1a2e}.art-body p{margin-bottom:16px}.art-body ul,.art-body ol{margin:12px 0 16px 24px}.art-body li{margin-bottom:8px}.art-body code{background:#f5f7fa;padding:2px 6px;border-radius:4px;font-size:13px;color:#e11d48}.art-body pre{background:#1a1a2e;color:#e2e8f0;padding:20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:13px}.art-side{width:300px;flex-shrink:0;position:sticky;top:80px;align-self:flex-start}.sb-card{background:#fff;border-radius:12px;padding:20px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.04)}.sb-card h4{font-size:14px;font-weight:700;margin-bottom:12px;color:#1a1a2e}.sb-rel-item{display:flex;gap:10px;margin-bottom:12px;text-decoration:none;color:inherit}.sb-rel-item:hover h5{color:#0088cc}.sb-rel-item h5{font-size:13px;font-weight:500;line-height:1.4;transition:color .2s}.trend-tags{display:flex;flex-wrap:wrap;gap:8px}.trend-tags a{font-size:12px;padding:4px 12px;background:#f5f7fa;border-radius:16px;color:#475569;text-decoration:none;transition:all .2s}.trend-tags a:hover{background:#e0f2fe;color:#0088cc}.info-box{background:#f0f9ff;border-left:4px solid #0088cc;padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-size:14px}.warn-box{background:#fffbeb;border-left:4px solid #f59e0b;padding:16px 20px;margin:20px 0;border-radius:0 8px 8px 0;font-size:14px}.warn-box strong{color:#92400e}.step-list{counter-reset:step;margin:20px 0}.step-card{background:#fff;border:1px solid #e8ecf1;border-radius:10px;padding:20px;margin-bottom:16px;counter-increment:step;position:relative;padding-left:64px}.step-card::before{content:counter(step);position:absolute;left:16px;top:20px;width:32px;height:32px;background:#0088cc;color:#fff;border-radius:50%;text-align:center;line-height:32px;font-weight:700;font-size:14px}.faq-list{margin:24px 0}.faq-item{border:1px solid #e8ecf1;border-radius:8px;margin-bottom:8px;overflow:hidden}.faq-q{padding:16px 20px;cursor:pointer;font-weight:600;font-size:15px;background:#f5f7fa;user-select:none;display:flex;justify-content:space-between;align-items:center}.faq-q:hover{background:#f0f7ff}.faq-arrow{font-size:12px;transition:transform .3s;color:#94a3b8}.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}.faq-a-inner{padding:0 20px 16px;font-size:14px;color:#475569;line-height:1.7}.faq-item.open .faq-a{max-height:300px}.faq-item.open .faq-arrow{transform:rotate(180deg)}table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px}th{background:#f0f7ff;padding:12px 16px;text-align:left;font-weight:600;border:1px solid #dce8f3}td{padding:12px 16px;border:1px solid #e8ecf1}.site-footer{background:#f0f7ff;border-top:1px solid #dce8f3;margin-top:80px}.footer-inner{max-width:1100px;margin:0 auto;padding:56px 24px 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}.footer-logo{font-size:20px;font-weight:700;color:#00a8e8;margin-bottom:12px}.footer-desc{font-size:13px;line-height:1.8;margin-bottom:16px;color:#475569}.footer-badge{display:inline-block;font-size:12px;background:#fff;color:#0088cc;padding:6px 14px;border-radius:20px;font-weight:500;border:1px solid #b8ddf5}.footer-social{margin-top:20px;display:flex;gap:10px;align-items:center}.footer-social a{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:#fff;border:1px solid #dce8f3;transition:all .25s;color:#475569}.footer-social a svg{width:18px;height:18px;fill:currentColor;transition:all .25s}.footer-social a:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,136,204,.15)}.footer-social a.soc-telegram:hover{color:#0088cc;border-color:#0088cc}.footer-social a.soc-x:hover{color:#000;border-color:#333}.footer-social a.soc-youtube:hover{color:#ff0000;border-color:#ff0000}.footer-social a.soc-facebook:hover{color:#1877f2;border-color:#1877f2}.footer-social a.soc-weibo:hover{color:#e6162d;border-color:#e6162d}.footer-col h4{font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:16px;letter-spacing:.02em}.footer-col ul{list-style:none}.footer-col li{margin-bottom:10px}.footer-col li a{font-size:13px;color:#475569;text-decoration:none;transition:color .2s}.footer-col li a:hover{color:#0088cc}.footer-bottom{border-top:1px solid #dce8f3;text-align:center;padding:20px 24px;font-size:12px;color:#94a3b8}@media(max-width:768px){.nav-links{display:none}.art-wrap{flex-direction:column}.art-main{padding:24px}.art-side{width:100%}.footer-inner{grid-template-columns:1fr 1fr;gap:32px}.footer-brand{grid-column:1/-1}}@media(max-width:480px){.footer-inner{grid-template-columns:1fr}}</style> <!-- FAQ accordion JS --> <script>
+    document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){var item=q.parentElement;var open=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0'});if(!open){item.classList.add('open');item.querySelector('.faq-a').style.maxHeight='500px'}})})});
+  </script> </body> </html>
